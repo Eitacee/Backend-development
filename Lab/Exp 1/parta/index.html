@@ -1,9 +1,149 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Part A</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A sample HTML5 page demonstrating various elements.">
+    <meta name="keywords" content="HTML5, Semantic HTML, Web Development, SEO">
+    <meta name="author" content="Student">
+    <title>Experiment 1: All HTML5 Elements</title>
+    <style>
+        body { font-family: sans-serif; line-height: 1.6; color: #333; background-color: #f4f4f4; margin: 0; padding: 20px; }
+        .container { max-width: 960px; margin: auto; background: #fff; padding: 20px; border-radius: 8px; }
+        header, footer { background: #333; color: #fff; text-align: center; padding: 1rem 0; }
+        nav { background: #444; padding: 0.5rem; }
+        nav ul { padding: 0; list-style: none; text-align: center; }
+        nav ul li { display: inline; margin-right: 20px; }
+        nav a { color: #fff; text-decoration: none; }
+        section { border-bottom: 1px solid #ddd; padding: 20px 0; }
+        form > div { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; }
+        input, select, textarea { width: 100%; padding: 8px; box-sizing: border-box; }
+        input[type="submit"] { width: auto; background: #5cb85c; color: white; padding: 10px 20px; border: 0; border-radius: 5px; cursor: pointer; }
+    </style>
 </head>
 <body>
-    <h1>Part A</h1>
+
+    <header>
+        <h1>HTML5 Elements Showcase</h1>
+        <p>A demonstration page for Experiment 1</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#structure">Structure</a></li>
+            <li><a href="#forms">Forms</a></li>
+            <li><a href="#media">Media</a></li>
+            <li><a href="#other">Other</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <main>
+            <article>
+                <header>
+                    <h2>About This Page</h2>
+                </header>
+                <p>This page is a practical demonstration of various elements introduced in HTML5. It fulfills the objectives of creating a well-structured, accessible, and feature-rich web page.</p>
+
+                <section id="structure">
+                    <h3>Semantic Structural Elements</h3>
+                    <p>This page uses semantic elements like <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;section&gt;</code>, and <code>&lt;footer&gt;</code> to define the structure. This is a key difference from HTML4, which relied heavily on generic <code>&lt;div&gt;</code> elements with IDs or classes.</p>
+                </section>
+
+                <section id="forms">
+                    <h3>HTML5 Form Inputs</h3>
+                    <p>HTML5 introduced new input types for better user experience and validation.</p>
+                    <form action="#" method="post">
+                        <div>
+                            <label for="email">Email Input:</label>
+                            <input type="email" id="email" name="email" placeholder="user@example.com" required>
+                        </div>
+                        <div>
+                            <label for="date">Date Input:</label>
+                            <input type="date" id="date" name="date">
+                        </div>
+                        <div>
+                            <label for="number">Number Input:</label>
+                            <input type="number" id="number" name="number" min="1" max="100" value="10">
+                        </div>
+                        <div>
+                           <label for="range">Range Input:</label>
+                           <input type="range" id="range" name="range" min="0" max="50" value="25">
+                        </div>
+                        <div>
+                           <label for="color">Color Picker:</label>
+                           <input type="color" id="color" name="color" value="#e66465">
+                        </div>
+                         <div>
+                            <label for="search">Search Input:</label>
+                            <input type="search" id="search" name="search" placeholder="Search...">
+                        </div>
+                        <div>
+                            <input type="submit" value="Submit Form">
+                        </div>
+                    </form>
+                </section>
+
+                <section id="media">
+                    <h3>Multimedia Elements</h3>
+                    <p>Embedding audio and video is now standardized with the <code>&lt;audio&gt;</code> and <code>&lt;video&gt;</code> elements.</p>
+                    
+                    <h4>Audio</h4>
+                    <figure>
+                        <figcaption>Listen to a sample audio track:</figcaption>
+                        <audio controls src="https://upload.wikimedia.org/wikipedia/commons/c/c8/Example_of_Monotreme_music.ogg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </figure>
+
+                    <h4>Video</h4>
+                    <figure>
+                        <figcaption>Watch a sample video:</figcaption>
+                        <video controls width="400" poster="https://peach.blender.org/wp-content/uploads/title_anouncement.jpg?x11217">
+                            <source src="https://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4" type="video/mp4">
+                            Sorry, your browser doesn't support embedded videos.
+                        </video>
+                    </figure>
+                </section>
+
+                <section id="other">
+                    <h3>Other Interesting Elements</h3>
+                    <p>Here are a few more useful HTML5 elements.</p>
+                    
+                    <h4>Details & Summary</h4>
+                    <details>
+                        <summary>Click to see more details</summary>
+                        <p>This content is hidden by default and becomes visible when the summary is clicked. It's great for FAQs or collapsible sections.</p>
+                    </details>
+
+                    <h4>Mark</h4>
+                    <p>The <mark>mark element</mark> can be used to highlight text that is of particular relevance in a specific context.</p>
+
+                    <h4>Time</h4>
+                    <p>The event is scheduled for <time datetime="2025-10-26T10:00">10:00 AM on October 26, 2025</time>.</p>
+                </section>
+                
+                <section>
+                    <h3>DOM Interaction with JavaScript</h3>
+                    <p id="dom-text">This text can be changed by clicking the button below.</p>
+                    <button onclick="changeText()">Change Text</button>
+                </section>
+            </article>
+        </main>
+    </div>
+
+    <footer>
+        <p>Experiment 1 Footer - &copy; <time datetime="2024">2024</time></p>
+    </footer>
+    
+    <script>
+        // Simple script to demonstrate DOM manipulation
+        function changeText() {
+            document.getElementById('dom-text').innerHTML = "The text has been changed using JavaScript! This demonstrates modifying the DOM.";
+        }
+    </script>
+
 </body>
 </html>
+
