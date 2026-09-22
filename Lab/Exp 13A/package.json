@@ -1,0 +1,13 @@
+{
+  "name": "mongoose-demo",
+  "version": "1.0.0",
+  "description": "Express + Mongoose User Management tutorial",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "mongoose": "^8.18.0"
+  }
+}
