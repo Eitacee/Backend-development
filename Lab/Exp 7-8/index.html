@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Experiment 07 & 08: Comprehensive ES6, DOM Manipulation, and Event Handling Interactive Laboratory and Showcase.">
+    <meta name="keywords" content="ES6, JavaScript, DOM Manipulation, Event Handling, Web Development, Academic Lab">
+    <meta name="author" content="Student - SAP ID: 590014595">
+    <title>Exp 07 & 08: ES6, DOM Manipulation & Event Handling</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background Animated Glow Elements -->
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
+    <div class="ambient-glow glow-3"></div>
+
+    <!-- Main Container -->
+    <div class="app-container">
+        <!-- Top Navigation & Header -->
+        <header class="app-header">
+            <div class="header-left">
+                <div class="academic-badge">
+                    <span class="badge-dot"></span>
+                    <span>Experiment 07 & 08 • Web Technologies Lab</span>
+                </div>
+                <h1 class="main-title">ES6, DOM & Event Handling Studio</h1>
+                <p class="subtitle">Modern ECMAScript 2015+ features, dynamic DOM mutations, and event-driven architecture.</p>
+            </div>
+            <div class="header-right">
+                <div class="student-info">
+                    <span class="student-label">Student Portal</span>
+                    <span class="student-id">SAP ID: 590014595</span>
+                </div>
+                <button id="themeToggleBtn" class="btn-icon" aria-label="Toggle Dark/Light Theme" title="Toggle Theme">
+                    <span class="theme-icon" id="themeIcon">🌙</span>
+                </button>
+                <a href="../" class="btn-outline back-link">← Lab Index</a>
+            </div>
+        </header>
+
+        <!-- Tab Navigation Bar -->
+        <nav class="tab-nav" aria-label="Lab Modules">
+            <button class="tab-btn active" data-tab="capstone" id="tab-capstone">
+                <span class="tab-icon">⚡</span>
+                <span>1. Capstone App (TaskFlow Pro)</span>
+            </button>
+            <button class="tab-btn" data-tab="es6" id="tab-es6">
+                <span class="tab-icon">📦</span>
+                <span>2. ES6 Syntax Sandbox</span>
+            </button>
+            <button class="tab-btn" data-tab="dom" id="tab-dom">
+                <span class="tab-icon">🎨</span>
+                <span>3. DOM Manipulation Lab</span>
+            </button>
+            <button class="tab-btn" data-tab="events" id="tab-events">
+                <span class="tab-icon">🎯</span>
+                <span>4. Event Handling Arena</span>
+            </button>
+            <button class="tab-btn" data-tab="theory" id="tab-theory">
+                <span class="tab-icon">📚</span>
+                <span>5. Lab Report & Viva Q&A</span>
+            </button>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="tab-content-area">
+
+            <!-- ========================================== -->
+            <!-- TAB 1: CAPSTONE APPLICATION (TaskFlow Pro) -->
+            <!-- ========================================== -->
+            <section class="tab-pane active" id="pane-capstone">
+                <div class="pane-header">
+                    <div>
+                        <h2 class="pane-title">Capstone Project: TaskFlow Pro Dashboard</h2>
+                        <p class="pane-description">
+                            A production-ready productivity dashboard uniting <strong>ES6 Classes, Arrow Functions, Destructuring, Spread Operators, dynamic DOM node creation, and Event Delegation</strong>.
+                        </p>
+                    </div>
+                    <div class="keyboard-hint">
+                        <span>Shortcut: <kbd>Ctrl</kbd> + <kbd>K</kbd> to search</span>
+                    </div>
+                </div>
+
+                <!-- Metrics / Summary Stats Grid -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon stat-total">📋</div>
+                        <div class="stat-details">
+                            <span class="stat-label">Total Tasks</span>
+                            <span class="stat-value" id="statTotal">0</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon stat-completed">✅</div>
+                        <div class="stat-details">
+                            <span class="stat-label">Completed</span>
+                            <span class="stat-value" id="statCompleted">0</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon stat-pending">⏳</div>
+                        <div class="stat-details">
+                            <span class="stat-label">Pending</span>
+                            <span class="stat-value" id="statPending">0</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon stat-rate">📈</div>
+                        <div class="stat-details">
+                            <span class="stat-label">Completion Rate</span>
+                            <span class="stat-value" id="statRate">0%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Capstone Controls & Filter Bar -->
+                <div class="capstone-layout">
+                    <!-- Left: Form to Add Task -->
+                    <div class="card form-card">
+                        <h3 class="card-title">
+                            <span>Add New Task</span>
+                            <span class="pill pill-primary">ES6 Form Handler</span>
+                        </h3>
+                        <form id="taskForm" class="interactive-form">
+                            <div class="form-group">
+                                <label for="taskTitle">Task Title <span class="required">*</span></label>
+                                <input type="text" id="taskTitle" name="title" placeholder="e.g., Implement ES6 Destructuring in Lab" required autocomplete="off">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group flex-1">
+                                    <label for="taskCategory">Category</label>
+                                    <select id="taskCategory" name="category">
+                                        <option value="Lab & Coding">💻 Lab & Coding</option>
+                                        <option value="Academics">📖 Academics</option>
+                                        <option value="Projects">🚀 Projects</option>
+                                        <option value="Personal">☕ Personal</option>
+                                    </select>
+                                </div>
+                                <div class="form-group flex-1">
+                                    <label for="taskPriority">Priority</label>
+                                    <select id="taskPriority" name="priority">
+                                        <option value="Low">🟢 Low</option>
+                                        <option value="Medium" selected>🟡 Medium</option>
+                                        <option value="High">🔴 High</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="taskDueDate">Due Date</label>
+                                <input type="date" id="taskDueDate" name="dueDate">
+                            </div>
+                            <button type="submit" id="addTaskBtn" class="btn btn-primary btn-block">
+                                <span>➕ Add Task</span>
+                            </button>
+                        </form>
+
+                        <!-- Code Concept Callout -->
+                        <div class="tech-stack-callout">
+                            <div class="callout-header">
+                                <span class="callout-icon">💡</span>
+                                <strong>ES6 Concepts Used In This Form</strong>
+                            </div>
+                            <ul class="callout-list">
+                                <li><code>class TaskItem { ... }</code> with constructor & default parameters</li>
+                                <li>Object destructuring: <code>const { title, category, priority } = formData;</code></li>
+                                <li>Rest/Spread: <code>tasks = [...tasks, newTask];</code></li>
+                                <li>Template literals generating HTML markup cleanly</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Right: Task List, Search & Filter -->
+                    <div class="card list-card">
+                        <div class="list-controls-header">
+                            <div class="search-box">
+                                <span class="search-icon">🔍</span>
+                                <input type="text" id="taskSearchInput" placeholder="Search tasks by title or tag (Ctrl+K)...">
+                                <button type="button" id="clearSearchBtn" class="btn-clear hidden" title="Clear search">✕</button>
+                            </div>
+                            <div class="filter-group" id="filterBtnGroup">
+                                <button type="button" class="filter-btn active" data-filter="all">All</button>
+                                <button type="button" class="filter-btn" data-filter="active">Active</button>
+                                <button type="button" class="filter-btn" data-filter="completed">Done</button>
+                                <button type="button" class="filter-btn" data-filter="High">High Priority</button>
+                            </div>
+                        </div>
+
+                        <!-- Progress Bar -->
+                        <div class="progress-container">
+                            <div class="progress-bar-track">
+                                <div class="progress-bar-fill" id="taskProgressBar" style="width: 0%;"></div>
+                            </div>
+                        </div>
+
+                        <!-- Tasks Dynamic Container (Event Delegation Root) -->
+                        <div class="task-list-wrapper">
+                            <ul id="taskList" class="task-list" aria-live="polite">
+                                <!-- Dynamic Items rendered here via JS -->
+                            </ul>
+                            <div id="emptyState" class="empty-state hidden">
+                                <div class="empty-icon">📭</div>
+                                <h4>No tasks found</h4>
+                                <p>Add a new task using the form or change your active filters!</p>
+                            </div>
+                        </div>
+
+                        <!-- List Footer Actions -->
+                        <div class="list-footer">
+                            <span class="active-count" id="activeTaskCount">0 tasks remaining</span>
+                            <div class="footer-actions">
+                                <button type="button" id="loadSampleTasksBtn" class="btn-text">Load Sample Tasks</button>
+                                <button type="button" id="clearCompletedBtn" class="btn-text text-danger">Clear Completed</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========================================== -->
+            <!-- TAB 2: ES6 SYNTAX SANDBOX                  -->
+            <!-- ========================================== -->
+            <section class="tab-pane" id="pane-es6">
+                <div class="pane-header">
+                    <div>
+                        <h2 class="pane-title">ES6 (ECMAScript 2015+) Syntax Showcase</h2>
+                        <p class="pane-description">
+                            Interactive code execution modules demonstrating key ES6 language features with live output.
+                        </p>
+                    </div>
+                    <button id="runAllEs6Btn" class="btn btn-outline">▶ Run All ES6 Tests</button>
+                </div>
+
+                <div class="cards-grid">
+                    <!-- Feature 1: let, const, and Scope -->
+                    <div class="card demo-card" id="demo-card-variables">
+                        <div class="demo-card-header">
+                            <span class="feature-tag">1. Variables & Scope</span>
+                            <h3><code>let</code>, <code>const</code> vs <code>var</code></h3>
+                        </div>
+                        <p class="demo-desc">Block-scoped bindings, temporal dead zone (TDZ), and preventing accidental re-declaration.</p>
+                        <pre class="code-block"><code>// Block Scoping Demonstration
+const PI = 3.14159;
+let count = 0;
+{
+    let count = 99; // Shadowed in block
+    const blockConstant = "Local";
+}
+// blockConstant is not accessible here!</code></pre>
+                        <button class="btn btn-sm btn-secondary run-demo-btn" data-demo="variables">Test Variables & Scope</button>
+                        <div class="console-output" id="out-variables">// Output will appear here...</div>
+                    </div>
+
+                    <!-- Feature 2: Arrow Functions -->
+                    <div class="card demo-card" id="demo-card-arrows">
+                        <div class="demo-card-header">
+                            <span class="feature-tag">2. Arrow Functions</span>
+                            <h3>Concise Syntax & Lexical <code>this</code></h3>
+                        </div>
+                        <p class="demo-desc">Concise one-liners, implicit return values, and preserving the enclosing execution context.</p>
+                        <pre class="code-block"><code>// Traditional vs Arrow
+const square = x => x * x;
+const add = (a, b) => a + b;
+
+const timerObj = {
+    seconds: 0,
+    start() {
+        // Arrow function retains 'this' from timerObj
+        setTimeout(() => this.seconds++, 100);
+    }
+};</code></pre>
+                        <button class="btn btn-sm btn-secondary run-demo-btn" data-demo="arrows">Test Arrow Functions</button>
+                        <div class="console-output" id="out-arrows">// Output will appear here...</div>
+                    </div>
+
+                    <!-- Feature 3: Template Literals -->
+                    <div class="card demo-card" id="demo-card-templates">
+                        <div class="demo-card-header">
+                            <span class="feature-tag">3. Template Literals</span>
+                            <h3>Expressions & Multi-line Strings</h3>
+                        </div>
+                        <p class="demo-desc">String interpolation with <code>${expression}</code> and clean multiline markup formatting without messy <code>+</code>.</p>
+                        <pre class="code-block"><code>const user = { name: "Prince", role: "Developer" };
+const score = 94;
+
+const greeting = `Hello, ${user.name}!
+Status: ${score >= 50 ? "Passed ✅" : "Failed ❌"}
+Role: ${user.role.toUpperCase()}`;</code></pre>
+                        <button class="btn btn-sm btn-secondary run-demo-btn" data-demo="templates">Test Template Literals</button>
+                        <div class="console-output" id="out-templates">// Output will appear here...</div>
+                    </div>
+
+                    <!-- Feature 4: Destructuring -->
+                    <div class="card demo-card" id="demo-card-destructuring">
+                        <div class="demo-card-header">
+                            <span class="feature-tag">4. Destructuring</span>
+                            <h3>Array & Object Unpacking</h3>
+                        </div>
+                        <p class="demo-desc">Extracting values into distinct variables with renaming and default fallbacks.</p>
+                        <pre class="code-block"><code>// Object Destructuring
+const student = { id: 590014595, name: "Student", branch: "CSE" };
+const { id, name: studentName, semester = 5 } = student;
+
+// Array Destructuring
+const coordinates = [28.6139, 77.2090];
+const [latitude, longitude] = coordinates;</code></pre>
+                        <button class="btn btn-sm btn-secondary run-demo-btn" data-demo="destructuring">Test Destructuring</button>
+                        <div class="console-output" id="out-destructuring">// Output will appear here...</div>
+                    </div>
+
+                    <!-- Feature 5: Spread & Rest -->
+                    <div class="card demo-card" id="demo-card-spread">
+                        <div class="demo-card-header">
+                            <span class="feature-tag">5. Spread & Rest</span>
+                            <h3>The <code>...</code> Operator</h3>
+                        </div>
+                        <p class="demo-desc">Rest parameters gather multiple values; spread expands iterables into elements or properties.</p>
+                        <pre class="code-block"><code>// Rest: collect arguments into an array
+const sumAll = (...numbers) => numbers.reduce((a, b) => a + b, 0);
+
+// Spread: merge & clone immutably
+const defaultSettings = { theme: "dark", notify: true };
+const userSettings = { ...defaultSettings, theme: "glass" };
+const merged = [...[1, 2], ...[3, 4]];</code></pre>
+                        <button class="btn btn-sm btn-secondary run-demo-btn" data-demo="spread">Test Spread & Rest</button>
+                        <div class="console-output" id="out-spread">// Output will appear here...</div>
+                    </div>
+
+                    <!-- Feature 6: Array Methods -->
+                    <div class="card demo-card" id="demo-card-arraymethods">
+                        <div class="demo-card-header">
+                            <span class="feature-tag">6. Modern Array Methods</span>
+                            <h3><code>map</code>, <code>filter</code>, <code>reduce</code>, <code>find</code></h3>
+                        </div>
+                        <p class="demo-desc">Declarative, immutable transformations replacing traditional verbose <code>for</code> loops.</p>
+                        <pre class="code-block"><code>const scores = [45, 82, 91, 60, 74, 98];
+
+const passGrades = scores
+    .filter(s => s >= 60)
+    .map(s => `Grade: ${s}%`);
+
+const total = scores.reduce((sum, val) => sum + val, 0);
+const average = (total / scores.length).toFixed(1);</code></pre>
+                        <button class="btn btn-sm btn-secondary run-demo-btn" data-demo="arraymethods">Test Array Methods</button>
+                        <div class="console-output" id="out-arraymethods">// Output will appear here...</div>
+                    </div>
+
+                    <!-- Feature 7: Classes & Inheritance -->
+                    <div class="card demo-card" id="demo-card-classes">
+                        <div class="demo-card-header">
+                            <span class="feature-tag">7. ES6 Classes</span>
+                            <h3>OOP with <code>class</code>, <code>constructor</code>, <code>extends</code></h3>
+                        </div>
+                        <p class="demo-desc">Clean syntactical sugar over JavaScript's prototypical inheritance mechanism.</p>
+                        <pre class="code-block"><code>class Experiment {
+    constructor(id, title) {
+        this.id = id;
+        this.title = title;
+    }
+    getInfo() {
+        return `Exp ${this.id}: ${this.title}`;
+    }
+}
+
+class WebLab extends Experiment {
+    constructor(id, title, framework) {
+        super(id, title);
+        this.framework = framework;
+    }
+}</code></pre>
+                        <button class="btn btn-sm btn-secondary run-demo-btn" data-demo="classes">Test ES6 Classes</button>
+                        <div class="console-output" id="out-classes">// Output will appear here...</div>
+                    </div>
+
+                    <!-- Feature 8: Promises & Async/Await -->
+                    <div class="card demo-card" id="demo-card-async">
+                        <div class="demo-card-header">
+                            <span class="feature-tag">8. Asynchronous JS</span>
+                            <h3><code>Promise</code> and <code>async / await</code></h3>
+                        </div>
+                        <p class="demo-desc">Handle asynchronous operations cleanly without callback hell.</p>
+                        <pre class="code-block"><code>const simulateFetchData = () => new Promise((resolve) => {
+    setTimeout(() => resolve({ status: 200, data: "Payload Received" }), 600);
+});
+
+async function loadData() {
+    const res = await simulateFetchData();
+    return `Server responded with: ${res.data}`;
+}</code></pre>
+                        <button class="btn btn-sm btn-secondary run-demo-btn" data-demo="async">Test Async / Await</button>
+                        <div class="console-output" id="out-async">// Output will appear here...</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========================================== -->
+            <!-- TAB 3: DOM MANIPULATION LAB                -->
+            <!-- ========================================== -->
+            <section class="tab-pane" id="pane-dom">
+                <div class="pane-header">
+                    <div>
+                        <h2 class="pane-title">DOM (Document Object Model) Manipulation Studio</h2>
+                        <p class="pane-description">
+                            Experience dynamic node tree navigation, real-time styling mutations, dynamic element injection, and attribute controls.
+                        </p>
+                    </div>
+                    <button id="resetDomLabBtn" class="btn btn-outline">↺ Reset Playground</button>
+                </div>
+
+                <div class="dom-lab-grid">
+                    <!-- Left: Control Panels -->
+                    <div class="dom-controls">
+                        <!-- Module 1: Selectors & Content Alteration -->
+                        <div class="card control-box">
+                            <h4 class="box-title">1. Selection & Text/HTML Mutation</h4>
+                            <p class="box-desc">Using <code>querySelector</code>, <code>textContent</code>, and <code>innerHTML</code>.</p>
+                            <div class="input-inline">
+                                <input type="text" id="domTextInput" placeholder="Enter custom heading text..." value="Updated via DOM!">
+                                <button id="btnUpdateText" class="btn btn-sm btn-primary">Set textContent</button>
+                            </div>
+                            <div class="input-inline mt-2">
+                                <input type="text" id="domHtmlInput" placeholder="HTML string e.g., <em>Awesome</em>" value="<span class='highlight-badge'>✨ Dynamic HTML</span>">
+                                <button id="btnUpdateHtml" class="btn btn-sm btn-secondary">Set innerHTML</button>
+                            </div>
+                        </div>
+
+                        <!-- Module 2: Class & Style Manipulations -->
+                        <div class="card control-box">
+                            <h4 class="box-title">2. ClassList & CSS Style Property</h4>
+                            <p class="box-desc">Manipulating <code>classList.add/remove/toggle</code> and <code>element.style</code>.</p>
+                            <div class="button-wrap">
+                                <button id="btnToggleNeon" class="btn btn-sm btn-outline">Toggle Neon Glow</button>
+                                <button id="btnToggleGlass" class="btn btn-sm btn-outline">Toggle Glassmorphism</button>
+                                <button id="btnToggleShape" class="btn btn-sm btn-outline">Toggle Border Radius</button>
+                                <button id="btnRandomColor" class="btn btn-sm btn-outline">Random Background</button>
+                            </div>
+                        </div>
+
+                        <!-- Module 3: Dynamic Node Creation & Deletion -->
+                        <div class="card control-box">
+                            <h4 class="box-title">3. Dynamic Node Creation & Removal</h4>
+                            <p class="box-desc">Using <code>createElement()</code>, <code>append()</code>, <code>prepend()</code>, and <code>remove()</code>.</p>
+                            <div class="input-inline">
+                                <input type="text" id="newNodeInput" placeholder="Item label..." value="Dynamic Node #1">
+                                <button id="btnAppendNode" class="btn btn-sm btn-primary">Append Child</button>
+                                <button id="btnPrependNode" class="btn btn-sm btn-secondary">Prepend</button>
+                            </div>
+                            <div class="button-wrap mt-2">
+                                <button id="btnRemoveLastNode" class="btn btn-sm btn-outline text-danger">Remove Last Child</button>
+                                <button id="btnClearAllNodes" class="btn btn-sm btn-outline text-danger">Clear Container</button>
+                            </div>
+                        </div>
+
+                        <!-- Module 4: Attribute & Dataset Manipulation -->
+                        <div class="card control-box">
+                            <h4 class="box-title">4. Attributes & Dataset Inspector</h4>
+                            <p class="box-desc">Using <code>setAttribute</code>, <code>getAttribute</code>, and <code>dataset</code>.</p>
+                            <div class="button-wrap">
+                                <button id="btnSetCustomAttr" class="btn btn-sm btn-outline">Set data-state="active"</button>
+                                <button id="btnToggleDisabled" class="btn btn-sm btn-outline">Toggle aria-disabled</button>
+                                <button id="btnInspectAttrs" class="btn btn-sm btn-secondary">Inspect Live Attributes</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Live Interactive Target Canvas -->
+                    <div class="dom-preview">
+                        <div class="card preview-card" id="domTargetCard">
+                            <div class="preview-badge" id="previewStateBadge">State: Normal</div>
+                            <h3 id="targetHeading" class="target-heading">Target Heading</h3>
+                            <p id="targetSubtext" class="target-subtext">This element is dynamically controlled by the controls on the left.</p>
+
+                            <!-- Dynamic Tag Container -->
+                            <div class="dynamic-container-header">
+                                <span class="label-tiny">Dynamic Children Container (&lt;div id="dynamicContainer"&gt;):</span>
+                                <span id="nodeCounter" class="node-counter">0 children</span>
+                            </div>
+                            <div id="dynamicContainer" class="dynamic-node-container">
+                                <!-- Dynamic nodes will be injected here -->
+                            </div>
+
+                            <!-- Live DOM Code Inspector Box -->
+                            <div class="dom-inspector-box">
+                                <div class="inspector-header">
+                                    <span>Live DOM Node Inspector</span>
+                                    <span class="inspector-badge">Real-time</span>
+                                </div>
+                                <pre class="inspector-code" id="liveInspectorCode">&lt;div id="domTargetCard" class="card preview-card"&gt;...&lt;/div&gt;</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========================================== -->
+            <!-- TAB 4: EVENT HANDLING ARENA                -->
+            <!-- ========================================== -->
+            <section class="tab-pane" id="pane-events">
+                <div class="pane-header">
+                    <div>
+                        <h2 class="pane-title">Event Handling & Propagation Arena</h2>
+                        <p class="pane-description">
+                            Master browser event listeners, the Event Object, event bubbling/capturing phases, and high-performance Event Delegation.
+                        </p>
+                    </div>
+                    <button id="clearEventLogBtn" class="btn btn-outline">Clear Event Stream</button>
+                </div>
+
+                <div class="events-grid">
+                    <!-- Event Station 1: Mouse Events -->
+                    <div class="card event-station">
+                        <div class="station-header">
+                            <span class="station-tag">Station 1</span>
+                            <h4>Mouse Events & Coordinates</h4>
+                        </div>
+                        <p class="station-desc">Testing <code>click</code>, <code>dblclick</code>, <code>mouseenter</code>, and real-time <code>mousemove</code>.</p>
+                        <div class="interactive-mouse-pad" id="mousePad">
+                            <span class="mouse-pad-label">Move Mouse or Click Here</span>
+                            <div class="mouse-coords" id="mouseCoords">X: 0 | Y: 0</div>
+                        </div>
+                        <div class="button-wrap mt-2">
+                            <button id="mouseClickBtn" class="btn btn-sm btn-primary">Single Click Me</button>
+                            <button id="mouseDblClickBtn" class="btn btn-sm btn-secondary">Double Click Me</button>
+                        </div>
+                    </div>
+
+                    <!-- Event Station 2: Keyboard Events -->
+                    <div class="card event-station">
+                        <div class="station-header">
+                            <span class="station-tag">Station 2</span>
+                            <h4>Keyboard Event Telemetry</h4>
+                        </div>
+                        <p class="station-desc">Inspecting <code>keydown</code>, <code>keyup</code>, <code>event.key</code>, and <code>event.code</code>.</p>
+                        <input type="text" id="keyboardInput" class="form-input" placeholder="Type anything here to inspect keys..." autocomplete="off">
+                        <div class="key-telemetry-grid">
+                            <div class="key-cell">
+                                <span class="key-label">Key</span>
+                                <span class="key-val" id="keyVal">-</span>
+                            </div>
+                            <div class="key-cell">
+                                <span class="key-label">Code</span>
+                                <span class="key-val" id="codeVal">-</span>
+                            </div>
+                            <div class="key-cell">
+                                <span class="key-label">KeyCode</span>
+                                <span class="key-val" id="keyCodeVal">-</span>
+                            </div>
+                            <div class="key-cell">
+                                <span class="key-label">Modifiers</span>
+                                <span class="key-val" id="modVal">None</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Event Station 3: Event Propagation (Bubbling vs Capturing) -->
+                    <div class="card event-station">
+                        <div class="station-header">
+                            <span class="station-tag">Station 3</span>
+                            <h4>Bubbling vs Capturing & stopPropagation</h4>
+                        </div>
+                        <p class="station-desc">Click nested tiers to observe standard bubbling phase from innermost child outward.</p>
+                        <div class="propagation-toggle-row">
+                            <label class="switch-label">
+                                <input type="checkbox" id="stopPropagationToggle">
+                                <span>Enable <code>e.stopPropagation()</code></span>
+                            </label>
+                            <label class="switch-label">
+                                <input type="checkbox" id="capturePhaseToggle">
+                                <span>Use Capture Phase <code>{ capture: true }</code></span>
+                            </label>
+                        </div>
+                        <!-- Nested Elements Hierarchy -->
+                        <div class="nested-box box-grandparent" id="boxGrandparent">
+                            <span class="box-label">Grandparent (&lt;div&gt;)</span>
+                            <div class="nested-box box-parent" id="boxParent">
+                                <span class="box-label">Parent (&lt;div&gt;)</span>
+                                <div class="nested-box box-child" id="boxChild">
+                                    <span class="box-label">Child (&lt;div&gt;) - Click Me!</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Event Station 4: Event Delegation -->
+                    <div class="card event-station">
+                        <div class="station-header">
+                            <span class="station-tag">Station 4</span>
+                            <h4>High-Performance Event Delegation</h4>
+                        </div>
+                        <p class="station-desc">One single listener on parent <code>&lt;ul&gt;</code> manages unlimited dynamically spawned buttons via <code>e.target</code>.</p>
+                        <div class="input-inline">
+                            <input type="text" id="delegationInput" placeholder="Item name..." value="Delegated Item">
+                            <button id="addDelegatedItemBtn" class="btn btn-sm btn-primary">+ Add Item</button>
+                        </div>
+                        <ul id="delegatedList" class="delegated-list mt-2">
+                            <li data-id="1"><span>Item #1 (Default)</span> <button class="btn-item-action" data-action="delete">✕</button></li>
+                            <li data-id="2"><span>Item #2 (Default)</span> <button class="btn-item-action" data-action="delete">✕</button></li>
+                            <li data-id="3"><span>Item #3 (Default)</span> <button class="btn-item-action" data-action="delete">✕</button></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Live Event Stream Console -->
+                <div class="card event-logger-card mt-3">
+                    <div class="logger-header">
+                        <div class="logger-title">
+                            <span class="live-pulse"></span>
+                            <span>Live Browser Event Dispatch Stream</span>
+                        </div>
+                        <span class="event-count-badge" id="eventCountBadge">0 events captured</span>
+                    </div>
+                    <div class="event-log-container" id="eventLogContainer">
+                        <div class="log-entry log-system">// Event Stream initialized. Interact with any station above to view emitted Event Objects...</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========================================== -->
+            <!-- TAB 5: LAB REPORT & VIVA VOCE GUIDE        -->
+            <!-- ========================================== -->
+            <section class="tab-pane" id="pane-theory">
+                <div class="pane-header">
+                    <div>
+                        <h2 class="pane-title">Academic Lab Manual: Experiment 07 & 08</h2>
+                        <p class="pane-description">Comprehensive documentation, theory notes, algorithms, output verification, and Viva Voce questions & answers.</p>
+                    </div>
+                    <a href="README.md" target="_blank" class="btn btn-outline">📄 Open Raw Markdown</a>
+                </div>
+
+                <div class="report-content-card card">
+                    <article class="lab-document">
+                        <header class="doc-title-header">
+                            <h2>EXPERIMENT 07 & 08: ES6, DOM MANIPULATION, AND EVENT HANDLING</h2>
+                            <div class="doc-meta">
+                                <span><strong>Course:</strong> Web Technologies / Backend Development Lab</span>
+                                <span><strong>Target Standards:</strong> ECMAScript 2015+ & W3C DOM Level 3</span>
+                                <span><strong>SAP ID:</strong> 590014595</span>
+                            </div>
+                        </header>
+
+                        <!-- Section 1: Objective -->
+                        <section class="doc-section">
+                            <h3 class="section-heading">1. Objective</h3>
+                            <p>
+                                To understand and apply <strong>ES6 (ECMAScript 2015)</strong> features in JavaScript, learn <strong>DOM (Document Object Model)</strong> manipulation, and implement <strong>event handling</strong> to build interactive web pages. By the end of this experiment, students will be able to write modern, clean JavaScript, dynamically modify HTML/CSS through the DOM tree, and respond to asynchronous user interactions using event listeners.
+                            </p>
+                        </section>
+
+                        <!-- Section 2: Hardware & Software Requirements -->
+                        <section class="doc-section">
+                            <h3 class="section-heading">2. Hardware and Software Requirements</h3>
+                            <table class="report-table">
+                                <thead>
+                                    <tr>
+                                        <th>Component</th>
+                                        <th>Specification / Environment</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Processor</strong></td>
+                                        <td>Intel Core i3 / AMD Ryzen 3 or higher</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>RAM</strong></td>
+                                        <td>Minimum 4 GB (8 GB recommended)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Operating System</strong></td>
+                                        <td>Windows 10/11, Linux, or macOS</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Code Editor</strong></td>
+                                        <td>Visual Studio Code / Antigravity IDE</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Web Browser</strong></td>
+                                        <td>Google Chrome 90+, Mozilla Firefox 88+, or Microsoft Edge (Chromium)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>JavaScript Engine</strong></td>
+                                        <td>V8 Engine (built-in browser runtime / Node.js)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </section>
+
+                        <!-- Section 3: Theory & Concepts -->
+                        <section class="doc-section">
+                            <h3 class="section-heading">3. Theoretical Background</h3>
+
+                            <h4>A. Key Innovations in ES6 (ECMAScript 2015)</h4>
+                            <p>
+                                ECMAScript 6 significantly matured JavaScript from a basic browser scripting language into a robust, object-oriented language for enterprise applications:
+                            </p>
+                            <ul class="styled-list">
+                                <li>
+                                    <strong>Block Scoping (<code>let</code> & <code>const</code>):</strong> Replaced function-scoped <code>var</code>, eliminating unintended hoisting side-effects and enforcing constant references.
+                                </li>
+                                <li>
+                                    <strong>Arrow Functions (<code>() => {}</code>):</strong> Shorter function syntax with lexical scoping for the <code>this</code> keyword (it inherits <code>this</code> from its defining scope).
+                                </li>
+                                <li>
+                                    <strong>Template Literals:</strong> Multi-line strings and expression interpolation via backticks (<code>`Hello, ${name}`</code>).
+                                </li>
+                                <li>
+                                    <strong>Destructuring Assignment:</strong> Clean syntax for unpacking values from arrays or object properties into distinct variables: <code>const { id, title } = task;</code>.
+                                </li>
+                                <li>
+                                    <strong>Spread & Rest Operators (<code>...</code>):</strong> Enables shallow cloning, array concatenation, and gathering dynamic arguments without the legacy <code>arguments</code> object.
+                                </li>
+                                <li>
+                                    <strong>Array Iteration Methods:</strong> Functional methods like <code>map()</code>, <code>filter()</code>, and <code>reduce()</code> that return new arrays rather than mutating existing data.
+                                </li>
+                                <li>
+                                    <strong>Classes & Modules:</strong> Formal syntax for constructors, methods, inheritance (<code>extends</code>), and encapsulation.
+                                </li>
+                            </ul>
+
+                            <h4>B. Document Object Model (DOM) Architecture</h4>
+                            <p>
+                                The DOM is a programming API for HTML documents representing the webpage structure as a tree of nodes (Document -> Root Element &lt;html&gt; -> &lt;head&gt; / &lt;body&gt; -> child nodes). Key manipulation methods include:
+                            </p>
+                            <ul class="styled-list">
+                                <li><strong>Targeting Nodes:</strong> <code>document.querySelector()</code>, <code>document.querySelectorAll()</code>, <code>document.getElementById()</code>.</li>
+                                <li><strong>Mutating Content:</strong> <code>node.textContent</code> (secure plain text), <code>node.innerHTML</code> (parses markup).</li>
+                                <li><strong>Creating and Injecting:</strong> <code>document.createElement('tagName')</code>, followed by <code>parent.appendChild()</code>, <code>parent.prepend()</code>, or <code>parent.append()</code>.</li>
+                                <li><strong>Modifying Styles & Classes:</strong> <code>element.classList.add()</code>, <code>remove()</code>, <code>toggle()</code>, and direct CSS custom properties.</li>
+                            </ul>
+
+                            <h4>C. Browser Event-Driven Architecture</h4>
+                            <p>
+                                User interactions fire asynchronous events in the browser. <code>addEventListener(eventType, handlerFunction, options)</code> registers listeners:
+                            </p>
+                            <ul class="styled-list">
+                                <li><strong>Event Propagation Phases:</strong> (1) Capturing phase (root down to target), (2) Target phase, and (3) Bubbling phase (target bubbling up to document root).</li>
+                                <li><strong>Preventing Defaults:</strong> <code>e.preventDefault()</code> stops default browser actions (such as form submits reloading the page).</li>
+                                <li><strong>Halting Propagation:</strong> <code>e.stopPropagation()</code> stops the event from propagating further up or down the DOM hierarchy.</li>
+                                <li><strong>Event Delegation Pattern:</strong> Leveraging event bubbling by placing a single event listener on a common ancestor to manage dynamic child elements, vastly improving memory performance.</li>
+                            </ul>
+                        </section>
+
+                        <!-- Section 4: Viva Voce Questions & Answers -->
+                        <section class="doc-section">
+                            <h3 class="section-heading">4. Viva Voce Questions & Model Answers</h3>
+                            <div class="viva-accordion">
+                                <details class="viva-item" open>
+                                    <summary>Q1: What are the differences between <code>var</code>, <code>let</code>, and <code>const</code>?</summary>
+                                    <div class="viva-answer">
+                                        <code>var</code> is function-scoped and hoisted with an initial value of <code>undefined</code>, allowing accidental redeclaration. <code>let</code> and <code>const</code> are block-scoped and reside in a "Temporal Dead Zone" (TDZ) from the start of the block until declared. <code>const</code> cannot be reassigned after declaration.
+                                    </div>
+                                </details>
+
+                                <details class="viva-item">
+                                    <summary>Q2: How do arrow functions handle the <code>this</code> keyword differently from traditional functions?</summary>
+                                    <div class="viva-answer">
+                                        Traditional functions bind <code>this</code> dynamically based on how the function was invoked (method call, standalone function, constructor, or call/apply). Arrow functions have <strong>lexical <code>this</code></strong>—they do not bind their own <code>this</code>, but instead inherit it directly from the parent lexical scope.
+                                    </div>
+                                </details>
+
+                                <details class="viva-item">
+                                    <summary>Q3: What is the difference between <code>textContent</code>, <code>innerText</code>, and <code>innerHTML</code>?</summary>
+                                    <div class="viva-answer">
+                                        <code>textContent</code> returns the raw text content of all elements including hidden scripts and styles without triggering a browser reflow. <code>innerText</code> is style-aware and only returns human-readable text that is visible on the screen, triggering reflow. <code>innerHTML</code> gets or sets the HTML markup inside an element, parsing tags but opening potential XSS security risks if untrusted inputs are used.
+                                    </div>
+                                </details>
+
+                                <details class="viva-item">
+                                    <summary>Q4: Explain Event Bubbling vs Event Capturing with real-world examples.</summary>
+                                    <div class="viva-answer">
+                                        In <strong>Event Capturing (Trickling)</strong>, the event starts at the highest ancestor (window/document) and trickles down to the target element. In <strong>Event Bubbling</strong>, the event fires on the target element first and bubbles upward through parent nodes until reaching the document. By default, <code>addEventListener</code> listens in the bubbling phase unless <code>{ capture: true }</code> is specified.
+                                    </div>
+                                </details>
+
+                                <details class="viva-item">
+                                    <summary>Q5: What is Event Delegation and why is it recommended for dynamic web pages?</summary>
+                                    <div class="viva-answer">
+                                        Event Delegation is a technique where instead of adding individual event listeners to hundreds of child elements (e.g., list items), you attach a single event listener to their parent container. When any child is clicked, the event bubbles up to the parent, where <code>event.target</code> identifies the clicked element. This dramatically reduces memory overhead and automatically handles dynamically created elements without needing to bind new listeners.
+                                    </div>
+                                </details>
+
+                                <details class="viva-item">
+                                    <summary>Q6: What is the difference between <code>event.target</code> and <code>event.currentTarget</code>?</summary>
+                                    <div class="viva-answer">
+                                        <code>event.target</code> refers to the specific element that actually triggered the event (the innermost element clicked). <code>event.currentTarget</code> refers to the element to which the event listener is currently attached.
+                                    </div>
+                                </details>
+                            </div>
+                        </section>
+
+                        <!-- Section 5: Conclusion -->
+                        <section class="doc-section">
+                            <h3 class="section-heading">5. Learning Outcomes & Conclusion</h3>
+                            <p>
+                                Through this experiment, we successfully investigated and applied modern ECMAScript 2015+ syntax rules (variables, arrow functions, destructuring, template literals, and array methods). We demonstrated programmatic manipulation of the Document Object Model (DOM) by dynamically inserting, mutating, styling, and removing HTML nodes. Finally, we mastered browser event handling, including bubbling, capturing, cancellation (<code>preventDefault</code>/<code>stopPropagation</code>), and event delegation. The interactive Capstone application validates how these three foundational pillars combine to construct performant, responsive web interfaces.
+                            </p>
+                        </section>
+                    </article>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <div class="footer-left">
+                <span>Experiment 07 & 08 • Backend & Web Development Lab</span>
+            </div>
+            <div class="footer-right">
+                <span>Built with Vanilla HTML5, Modern CSS3 & ES6 JavaScript</span>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div id="toastContainer" class="toast-container" aria-live="polite"></div>
+
+    <!-- Script Import -->
+    <script src="app.js"></script>
+</body>
+</html>
