@@ -35,41 +35,4 @@ my-notes/
         └── style.css    ← Custom styles
 ```
 
-## MongoDB Configuration
-| Setting | Value |
-|---|---|
-| URL | `mongodb://127.0.0.1:27017` |
-| Database | `notes_lab` |
-| Collection | `notes` |
 
-## Running the Application
-
-### Prerequisites
-- Node.js installed
-- MongoDB running on `127.0.0.1:27017`
-
-### Steps
-
-```bash
-# 1. Go to the project directory
-cd my-notes
-
-# 2. Install dependencies (already done if you cloned this)
-npm install
-
-# 3. Start the server
-node app.js
-
-# 4. Open in browser
-http://localhost:3000
-```
-
-## Routes
-| Method | Route | Description |
-|---|---|---|
-| GET | `/` | Display all notes (with optional `?search=` and `?category=`) |
-| GET | `/notes/new` | Show add-note form |
-| POST | `/notes` | Insert a new note |
-| GET | `/notes/:id/edit` | Show edit form |
-| POST | `/notes/:id/edit` | Update note |
-| POST | `/notes/:id/delete` | Delete a note |
