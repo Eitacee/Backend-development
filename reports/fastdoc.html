@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>fastdoc: Student Management API & Docker Commit Workflow - Report | Prince Kandari</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --text: #1f2937;
+      --text-muted: #4b5563;
+      --bg: #f9fafb;
+      --card-bg: #ffffff;
+      --border: #e5e7eb;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 24px 16px;
+    }
+    .nav-bar {
+      max-width: 860px;
+      margin: 0 auto 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.15s ease;
+    }
+    .btn-back {
+      background: #fff;
+      border-color: var(--border);
+      color: var(--text);
+    }
+    .btn-back:hover { background: #f3f4f6; }
+    .btn-pdf {
+      background: #059669;
+      color: #fff;
+    }
+    .btn-pdf:hover { background: #047857; }
+    .btn-print {
+      background: var(--primary);
+      color: #fff;
+    }
+    .btn-print:hover { background: #1d4ed8; }
+    .btn-repo {
+      background: #0f172a;
+      color: #fff;
+    }
+    .btn-repo:hover { background: #1e293b; }
+
+    /* Report Paper Document */
+    .report-paper {
+      max-width: 860px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 48px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    .header-box {
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 20px;
+      margin-bottom: 28px;
+    }
+    .badge {
+      display: inline-block;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      background: #eff6ff;
+      color: var(--primary);
+      padding: 4px 10px;
+      border-radius: 4px;
+      margin-bottom: 10px;
+    }
+    h1 { font-size: 1.85rem; color: #111827; margin-bottom: 8px; line-height: 1.3; }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 10px;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-top: 14px;
+      background: #f8fafc;
+      padding: 14px 18px;
+      border-radius: 6px;
+    }
+    .meta-grid strong { color: var(--text); }
+    
+    h2 { font-size: 1.25rem; color: #111827; margin: 28px 0 12px; border-left: 4px solid var(--primary); padding-left: 10px; }
+    h3 { font-size: 1.05rem; margin: 18px 0 8px; }
+    p { margin-bottom: 12px; }
+    ul, ol { margin-left: 20px; margin-bottom: 14px; }
+    li { margin-bottom: 6px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 16px; }
+    .tag { background: #f1f5f9; color: #334155; padding: 4px 10px; border-radius: 4px; font-size: 0.82rem; font-family: monospace; font-weight: 600; }
+    pre {
+      background: #1e293b;
+      color: #f8fafc;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-family: ui-monospace, Menlo, Consolas, monospace;
+      font-size: 0.88rem;
+      margin: 14px 0 18px;
+      line-height: 1.5;
+    }
+    code { font-family: monospace; font-size: 0.9em; }
+    .callout {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      color: #1e40af;
+      padding: 14px 18px;
+      border-radius: 6px;
+      margin: 18px 0;
+    }
+    .callout a {
+      color: #1d4ed8;
+      font-weight: 700;
+      text-decoration: underline;
+    }
+
+    @media print {
+      body { background: #fff; padding: 0; }
+      .nav-bar { display: none !important; }
+      .report-paper { border: none; box-shadow: none; padding: 0; width: 100%; }
+      pre { background: #f8fafc; color: #000; border: 1px solid #ccc; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="nav-bar">
+    <a href="../index.html" class="btn btn-back">← Back to Coursework Portal</a>
+    <div style="display: flex; gap: 10px;">
+      <a href="https://github.com/Eitacee/fastdoc" target="_blank" class="btn btn-repo">🐙 GitHub Repo</a>
+      <button onclick="downloadPDF()" class="btn btn-pdf">📥 Download PDF</button>
+      <button onclick="window.print()" class="btn btn-print">🖨️ Print / Save</button>
+    </div>
+  </div>
+
+  <div class="report-paper" id="report-content">
+    <div class="header-box">
+      <span class="badge">Standalone Repository Task & Containerization</span>
+      <h1>fastdoc: Student Management API & Docker Commit Workflow</h1>
+      <div class="meta-grid">
+        <div>👨‍🎓 Student: <strong>Prince Kandari</strong></div>
+        <div>🆔 SAP ID: <strong>590014595</strong></div>
+        <div>🎓 Course: <strong>Backend Development</strong></div>
+        <div>📅 Semester: <strong>5th Sem (B.Tech Full Stack)</strong></div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>Dedicated GitHub Repository:</strong> The full codebase and version history for this microservice task is maintained at: <a href="https://github.com/Eitacee/fastdoc" target="_blank">https://github.com/Eitacee/fastdoc</a>.
+    </div>
+
+    <h2>1. Overview & Objective</h2>
+    <p>The <strong>fastdoc</strong> task implements a lightweight, RESTful Student Management API engineered with Node.js and Express. It serves as both a local development project and a practical exercise in custom container creation utilizing the manual <strong><code>docker commit</code></strong> workflow instead of conventional Dockerfile builds.</p>
+    <ul>
+      <li>Implement RESTful CRUD operations (Create, Read, Delete) for student records using an in-memory data store.</li>
+      <li>Configure development workflow with <code>nodemon</code> for hot-reloading and production startup scripts.</li>
+      <li>Demonstrate containerization concepts by manually spawning interactive containers, provisioning dependencies, and snapshotting images with <code>docker commit</code>.</li>
+    </ul>
+
+    <h2>2. Technology Stack & Tools</h2>
+    <div class="tags">
+      <span class="tag">Node.js</span><span class="tag">Express.js</span><span class="tag">REST API</span><span class="tag">Docker</span><span class="tag">docker commit</span><span class="tag">Nodemon</span>
+    </div>
+
+    <h2>3. Repository & Project Structure</h2>
+    <pre><code>fastdoc/
+├── .gitignore          # Ignores node_modules and logs
+├── app.js              # Express.js server & in-memory Student Management API
+├── package.json        # Project metadata, dependencies, and start/dev scripts
+├── package-lock.json   # Exact dependency lockfile
+└── README.md           # Documentation, API specifications, and Docker commit instructions</code></pre>
+
+    <h2>4. REST API Endpoint Specifications</h2>
+    <p>The Express application binds to port 3000 and exposes the following endpoints:</p>
+    <ul>
+      <li><code>GET /</code>: Welcome message, version info, and dictionary of available endpoints.</li>
+      <li><code>GET /students</code>: Retrieve all active student records in JSON format.</li>
+      <li><code>GET /students/:id</code>: Retrieve a single student matching the unique ID parameter.</li>
+      <li><code>POST /students</code>: Ingest a new student JSON payload (name, course, age).</li>
+      <li><code>DELETE /students/:id</code>: Remove a student record matching the specified ID.</li>
+    </ul>
+
+    <h2>5. Docker Manual Containerization Workflow (`docker commit`)</h2>
+    <p>Instead of relying on an automated Dockerfile build, this practical demonstrates stateful container snapshotting:</p>
+    <pre><code># 1. Run an interactive base container
+docker run -it -d --name fastdoc-builder -p 3000:3000 -w /app node:18-alpine sh
+
+# 2. Copy source code into the running container
+docker cp . fastdoc-builder:/app
+
+# 3. Install production dependencies inside the container
+docker exec -it fastdoc-builder npm install --production
+
+# 4. Commit the container snapshot with default working directory and startup command
+docker commit -c "WORKDIR /app" -c "CMD node app.js" fastdoc-builder fastdoc-image:latest
+
+# 5. Stop and clean up builder container
+docker stop fastdoc-builder && docker rm fastdoc-builder
+
+# 6. Run the new production container from committed image
+docker run -d --name fastdoc-app -p 3000:3000 fastdoc-image:latest</code></pre>
+
+    <h2>6. Key Outcomes & Learning</h2>
+    <ul>
+      <li>Understood how Docker layers and filesystem changes are captured into immutable image snapshots via <code>docker commit</code>.</li>
+      <li>Mastered Node.js Express RESTful architectural conventions and middleware.</li>
+      <li>Configured port forwarding and container lifecycle management in production Docker environments.</li>
+    </ul>
+
+    <div class="callout" style="background:#f0fdf4; border-color:#bbf7d0; color:#166534;">
+      <strong>Repository Verification:</strong> Fully implemented, containerized, and published at <a href="https://github.com/Eitacee/fastdoc" target="_blank" style="color:#15803d;">github.com/Eitacee/fastdoc</a>.
+    </div>
+  </div>
+
+  <script>
+    function downloadPDF() {
+      const element = document.getElementById('report-content');
+      const opt = {
+        margin: [10, 10, 10, 10],
+        filename: 'Prince_Kandari_590014595_fastdoc_task.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2, useCORS: true },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+      };
+      html2pdf().set(opt).from(element).save();
+    }
+
+    // Trigger auto-download if requested via query param ?download=1
+    if (new URLSearchParams(window.location.search).get('download') === '1') {
+      window.addEventListener('load', () => {
+        setTimeout(downloadPDF, 600);
+      });
+    }
+  </script>
+</body>
+</html>

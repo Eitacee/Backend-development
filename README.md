@@ -48,13 +48,23 @@ BackendDevelopment/
 │   ├── notes-app/           # Assignment 1: LocalStorage Note Taking App
 │   └── Assignment2_PostgreSQL_JSONB/  # Assignment 2: PostgreSQL JSONB Research
 │
-├── fastdoc/                 # Student Management Express REST API
+├── FASTDOC_STUDENT_API.md   # fastdoc Student Management API specifications & Docker workflow
 ├── .gitignore
 └── README.md
 ```
 
-> **Note on Docker FastAPI Application:**  
-> The containerized Docker FastAPI microservice and reverse-proxy deployment is maintained in a dedicated standalone repository.
+---
+
+## 🐳 Standalone Repository Task: fastdoc - Student Management API
+
+* **GitHub Repository:** [https://github.com/Eitacee/fastdoc](https://github.com/Eitacee/fastdoc)
+* **Local Specifications File:** [`FASTDOC_STUDENT_API.md`](./FASTDOC_STUDENT_API.md)
+* **Interactive Report & PDF:** [Read Report & Download PDF](https://eitacee.github.io/Backend-development/reports/fastdoc.html)
+
+A lightweight RESTful Student Management API built with Express.js featuring in-memory CRUD operations (`GET /`, `GET /students`, `GET /students/:id`, `POST /students`, `DELETE /students/:id`) and step-by-step instructions for containerization using manual `docker commit`.
+
+> **Note on Standalone Microservices:**  
+> The containerized fastdoc microservice and its Docker environment are maintained in the dedicated standalone repository: [https://github.com/Eitacee/fastdoc](https://github.com/Eitacee/fastdoc).
 
 ---
 
