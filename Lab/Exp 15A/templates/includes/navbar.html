@@ -1,0 +1,16 @@
+<nav class="app-navbar">
+    <div class="nav-container">
+        <a href="{% url 'task_list' %}" class="nav-brand">
+            <span class="nav-logo-icon">✓</span>
+            <span>TaskFlow</span>
+            <span class="nav-badge">Django MVT</span>
+        </a>
+        <div class="nav-links">
+            <a href="{% url 'task_list' %}" class="nav-link">All Tasks</a>
+            <a href="/admin/" target="_blank" class="nav-link">Django Admin</a>
+            <a href="{% url 'add_task' %}" class="btn-nav-primary">
+                <span>+</span> Add Task
+            </a>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,32 @@
+<li class="task-item {% if task.completed %}is-completed{% endif %}" id="task-{{ task.id }}">
+    <div class="task-main">
+        <a href="{% url 'toggle_task' task.id %}" class="task-checkbox-link" title="Click to toggle status">
+            {% if task.completed %}✓{% endif %}
+        </a>
+        <div class="task-details">
+            <span class="task-title">
+                {% if task.completed %}
+                    <s>{{ task.title }}</s>
+                {% else %}
+                    {{ task.title }}
+                {% endif %}
+            </span>
+            <div class="task-meta">
+                <span>Created: {{ task.created_at|date:"M d, Y · h:i A" }}</span>
+                {% if task.completed %}
+                    <span class="badge badge-completed">Completed</span>
+                {% else %}
+                    <span class="badge badge-pending">Pending</span>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="task-actions">
+        <a href="{% url 'toggle_task' task.id %}" class="btn-action btn-toggle" title="Toggle task status">
+            {% if task.completed %}Mark Incomplete{% else %}Mark Complete{% endif %}
+        </a>
+        <a href="{% url 'delete_task' task.id %}" class="btn-action btn-delete" title="Delete task">
+            Delete
+        </a>
+    </div>
+</li>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inline CSS Example</title>
+</head>
+<body style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; background: linear-gradient(135deg, #f5f7fa, #c3cfe2); min-height: 100vh; padding: 20px; margin: 0;">
+
+    <div style="max-width: 900px; margin: 0 auto; background: white; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.15); overflow: hidden;">
+
+        <!-- HEADER -->
+        <header style="background: linear-gradient(135deg, #e74c3c, #c0392b); color: white; padding: 35px 30px; text-align: center;">
+            <h1 style="margin: 0; font-size: 2.2rem; letter-spacing: 1px;">⚡ Inline CSS</h1>
+            <p style="margin: 10px 0 0 0; opacity: 0.9; font-size: 1.1rem;">Styles applied directly to individual HTML elements</p>
+        </header>
+
+        <!-- CONTENT -->
+        <div style="padding: 30px;">
+
+            <!-- Introduction -->
+            <section style="margin-bottom: 30px;">
+                <h2 style="color: #e74c3c; border-bottom: 3px solid #e74c3c; padding-bottom: 10px; margin-top: 0;">What is Inline CSS?</h2>
+                <p style="font-size: 1.05rem;">Inline CSS uses the <code style="background: #f8f9fa; padding: 2px 6px; border-radius: 4px;">style</code> attribute directly on HTML elements. This applies styles to <strong style="color: #e74c3c;">specific</strong> elements only.</p>
+
+                <div style="background: #fdf2f2; border-left: 5px solid #e74c3c; padding: 15px 20px; border-radius: 4px; margin-top: 15px;">
+                    <p style="margin: 0;"><strong>💡 Key Characteristic:</strong> Inline CSS has the <strong style="color: #e74c3c;">highest specificity</strong> and will override all other styles.</p>
+                </div>
+            </section>
+
+            <!-- Feature Cards -->
+            <section style="margin-bottom: 30px;">
+                <h3 style="color: #2c3e50;">Features of Inline CSS</h3>
+                <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 15px;">
+
+                    <div style="flex: 1; min-width: 180px; background: #f8f9fa; padding: 20px; border-radius: 8px; border-top: 4px solid #e74c3c;">
+                        <div style="font-size: 2rem; text-align: center;">🎯</div>
+                        <h4 style="margin: 10px 0 5px 0; text-align: center; color: #e74c3c;">Precise</h4>
+                        <p style="margin: 0; text-align: center; color: #666; font-size: 0.9rem;">Applies to a single element</p>
+                    </div>
+
+                    <div style="flex: 1; min-width: 180px; background: #f8f9fa; padding: 20px; border-radius: 8px; border-top: 4px solid #f39c12;">
+                        <div style="font-size: 2rem; text-align: center;">⚡</div>
+                        <h4 style="margin: 10px 0 5px 0; text-align: center; color: #f39c12;">Highest Priority</h4>
+                        <p style="margin: 0; text-align: center; color: #666; font-size: 0.9rem;">Overrides all other styles</p>
+                    </div>
+
+                    <div style="flex: 1; min-width: 180px; background: #f8f9fa; padding: 20px; border-radius: 8px; border-top: 4px solid #3498db;">
+                        <div style="font-size: 2rem; text-align: center;">🧪</div>
+                        <h4 style="margin: 10px 0 5px 0; text-align: center; color: #3498db;">Quick Testing</h4>
+                        <p style="margin: 0; text-align: center; color: #666; font-size: 0.9rem;">Fast for experimental styling</p>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Comparison Table -->
+            <section style="margin-bottom: 30px;">
+                <h3 style="color: #2c3e50;">CSS Types Comparison</h3>
+                <div style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 0.95rem;">
+                        <thead>
+                            <tr style="background: #2c3e50; color: white;">
+                                <th style="padding: 12px 15px; text-align: left;">Feature</th>
+                                <th style="padding: 12px 15px; text-align: left; background: #e74c3c;">Inline</th>
+                                <th style="padding: 12px 15px; text-align: left; background: #27ae60;">Internal</th>
+                                <th style="padding: 12px 15px; text-align: left; background: #3498db;">External</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid #eee;">
+                                <td style="padding: 10px 15px;"><strong>Reusability</strong></td>
+                                <td style="padding: 10px 15px; color: #e74c3c;">❌ No</td>
+                                <td style="padding: 10px 15px; color: #f39c12;">⚠️ Limited</td>
+                                <td style="padding: 10px 15px; color: #27ae60;">✅ Yes</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #eee; background: #f8f9fa;">
+                                <td style="padding: 10px 15px;"><strong>Maintainability</strong></td>
+                                <td style="padding: 10px 15px; color: #e74c3c;">❌ Hard</td>
+                                <td style="padding: 10px 15px; color: #f39c12;">⚠️ Moderate</td>
+                                <td style="padding: 10px 15px; color: #27ae60;">✅ Easy</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #eee;">
+                                <td style="padding: 10px 15px;"><strong>Specificity</strong></td>
+                                <td style="padding: 10px 15px; color: #e74c3c; font-weight: bold;">Highest</td>
+                                <td style="padding: 10px 15px; color: #f39c12;">Medium</td>
+                                <td style="padding: 10px 15px; color: #3498db;">Lowest</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #eee; background: #f8f9fa;">
+                                <td style="padding: 10px 15px;"><strong>Caching</strong></td>
+                                <td style="padding: 10px 15px; color: #e74c3c;">❌ No</td>
+                                <td style="padding: 10px 15px; color: #e74c3c;">❌ No</td>
+                                <td style="padding: 10px 15px; color: #27ae60;">✅ Yes</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 10px 15px;"><strong>Best For</strong></td>
+                                <td style="padding: 10px 15px; color: #e74c3c;">Single elements</td>
+                                <td style="padding: 10px 15px; color: #f39c12;">Single pages</td>
+                                <td style="padding: 10px 15px; color: #27ae60;">Multiple pages</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Code Example -->
+            <section style="margin-bottom: 20px;">
+                <h3 style="color: #2c3e50;">Code Example</h3>
+                <div style="background: #2c3e50; color: #ecf0f1; padding: 15px 20px; border-radius: 6px; font-family: 'Courier New', monospace; font-size: 0.9rem; overflow-x: auto;">
+                    <pre style="margin: 0; color: #ecf0f1;">
+<span style="color: #f39c12;">&lt;h1</span> <span style="color: #2ecc71;">style</span>=<span style="color: #e74c3c;">"color: #e74c3c; font-size: 2.5rem; text-align: center;"</span><span style="color: #f39c12;">&gt;</span>
+    <span style="color: #ecf0f1;">Hello World</span>
+<span style="color: #f39c12;">&lt;/h1&gt;</span>
+
+<span style="color: #f39c12;">&lt;p</span> <span style="color: #2ecc71;">style</span>=<span style="color: #e74c3c;">"background: #f8f9fa; padding: 15px; border-left: 4px solid #3498db;"</span><span style="color: #f39c12;">&gt;</span>
+    <span style="color: #ecf0f1;">This paragraph has inline styling for background, padding, and border.</span>
+<span style="color: #f39c12;">&lt;/p&gt;</span>
+
+<span style="color: #f39c12;">&lt;div</span> <span style="color: #2ecc71;">style</span>=<span style="color: #e74c3c;">"display: flex; gap: 10px; justify-content: center;"</span><span style="color: #f39c12;">&gt;</span>
+    <span style="color: #f39c12;">&lt;button</span> <span style="color: #2ecc71;">style</span>=<span style="color: #e74c3c;">"background: #27ae60; color: white; padding: 10px 20px; border: none; border-radius: 5px;"</span><span style="color: #f39c12;">&gt;</span>Submit<span style="color: #f39c12;">&lt;/button&gt;</span>
+<span style="color: #f39c12;">&lt;/div&gt;</span>
+                    </pre>
+                </div>
+            </section>
+
+            <!-- Interactive Example -->
+            <section>
+                <h3 style="color: #2c3e50;">Try It Yourself</h3>
+                <div style="display: flex; gap: 20px; flex-wrap: wrap; background: #f8f9fa; padding: 20px; border-radius: 8px;">
+
+                    <div style="flex: 1; min-width: 150px; text-align: center;">
+                        <div style="font-size: 4rem;">🔴</div>
+                        <p style="margin: 5px 0 0 0; font-weight: bold; color: #e74c3c;">Red Style</p>
+                        <div style="width: 100px; height: 100px; background: #e74c3c; border-radius: 12px; margin: 10px auto;"></div>
+                    </div>
+
+                    <div style="flex: 1; min-width: 150px; text-align: center;">
+                        <div style="font-size: 4rem;">🟢</div>
+                        <p style="margin: 5px 0 0 0; font-weight: bold; color: #27ae60;">Green Style</p>
+                        <div style="width: 100px; height: 100px; background: #27ae60; border-radius: 12px; margin: 10px auto;"></div>
+                    </div>
+
+                    <div style="flex: 1; min-width: 150px; text-align: center;">
+                        <div style="font-size: 4rem;">🔵</div>
+                        <p style="margin: 5px 0 0 0; font-weight: bold; color: #3498db;">Blue Style</p>
+                        <div style="width: 100px; height: 100px; background: #3498db; border-radius: 12px; margin: 10px auto;"></div>
+                    </div>
+
+                </div>
+            </section>
+
+        </div>
+
+        <!-- FOOTER -->
+        <footer style="background: #2c3e50; color: rgba(255,255,255,0.8); text-align: center; padding: 20px;">
+            <p style="margin: 0;">Inline CSS Demonstration &bull; Backend Development Lab</p>
+            <small style="opacity: 0.7;">&copy; 2026 CSFS3008P - Experiment 2</small>
+        </footer>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Add New Task{% endblock %}
+
+{% block content %}
+<div class="form-card">
+    <div style="margin-bottom: 1.5rem;">
+        <h2 class="page-title" style="font-size: 1.5rem;">Add a New Task</h2>
+        <p class="page-subtitle">Enter the details of your task to add it to your list</p>
+    </div>
+
+    <form method="post" action="{% url 'add_task' %}">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="id_title" class="form-label">Task Title</label>
+            <input 
+                type="text" 
+                id="id_title"
+                name="title" 
+                class="form-input" 
+                placeholder="e.g. Finish Experiment 15 Django lab report" 
+                required 
+                maxlength="200"
+                autocomplete="off"
+            >
+        </div>
+
+        <div class="form-actions">
+            <a href="{% url 'task_list' %}" class="btn-cancel">Cancel</a>
+            <button type="submit" class="btn-submit">Add Task</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

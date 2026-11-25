@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}My To-Do List{% endblock %}
+
+{% block content %}
+<!-- Stats Overview Ribbon -->
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-icon total">📋</div>
+        <div class="stat-info">
+            <div class="stat-value">{{ total_count|default:"0" }}</div>
+            <div class="stat-label">Total Tasks</div>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon pending">⏳</div>
+        <div class="stat-info">
+            <div class="stat-value">{{ pending_count|default:"0" }}</div>
+            <div class="stat-label">Pending</div>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon completed">✅</div>
+        <div class="stat-info">
+            <div class="stat-value">{{ completed_count|default:"0" }}</div>
+            <div class="stat-label">Completed</div>
+        </div>
+    </div>
+</div>
+
+<!-- Header Section -->
+<div class="page-header">
+    <div>
+        <h1 class="page-title">My To-Do List</h1>
+        <p class="page-subtitle">Track, organize, and complete your daily goals effortlessly</p>
+    </div>
+    <a href="{% url 'add_task' %}" class="btn-nav-primary">
+        <span>+</span> Add New Task
+    </a>
+</div>
+
+<!-- Task List Card -->
+<div class="card">
+    <ul class="task-list">
+        {% for task in tasks %}
+            <!-- Modular include demonstrating template component reusability -->
+            {% include 'todo/includes/task_item.html' with task=task %}
+        {% empty %}
+            <li class="empty-state">
+                <div class="empty-icon">📝</div>
+                <h3 class="empty-title">No tasks yet!</h3>
+                <p class="empty-desc">Your to-do list is clean and clear. Click the button below to add your first task.</p>
+                <a href="{% url 'add_task' %}" class="btn-nav-primary">
+                    <span>+</span> Create First Task
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

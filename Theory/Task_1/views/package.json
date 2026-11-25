@@ -1,0 +1,35 @@
+{
+    "name": "test1",
+    "version": "1.0.0",
+    "description": "Backend Development",
+    "keywords": [
+        "testing",
+        "nodejs",
+        "for",
+        "webdev"
+    ],
+    "homepage": "https://github.com/Shaily-Sinha/Backend-Development#readme",
+    "bugs": {
+        "url": "https://github.com/Shaily-Sinha/Backend-Development/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Shaily-Sinha/Backend-Development.git"
+    },
+    "license": "ISC",
+    "author": "",
+    "type": "commonjs",
+    "main": "server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev": "nodemon server.js",
+        "Node": "node server.js"
+    },
+    "dependencies": {
+        "ejs": "^6.0.1",
+        "express": "^5.2.1"
+    },
+    "devDependencies": {
+        "nodemon": "^3.1.14"
+    }
+}

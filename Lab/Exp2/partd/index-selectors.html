@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Selectors Demonstration</title>
+    <style>
+        /* ====== UNIVERSAL SELECTOR ====== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* ====== ELEMENT/TYPE SELECTOR ====== */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: #f0f4f8;
+            padding: 20px;
+            color: #2c3e50;
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #2980b9;
+            margin: 20px 0 10px 0;
+        }
+
+        h3 {
+            color: #2c3e50;
+            margin: 15px 0 8px 0;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        /* ====== CLASS SELECTOR ====== */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .demo-section {
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .highlight {
+            background: #fff3cd;
+            padding: 2px 8px;
+            border-radius: 4px;
+            color: #856404;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background: #3498db;
+            margin: 10px;
+            display: inline-block;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .box.rounded {
+            border-radius: 50%;
+        }
+
+        .box.shadow {
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.4);
+        }
+
+        .text-large {
+            font-size: 1.3rem;
+        }
+
+        .text-success {
+            color: #27ae60;
+        }
+
+        .text-danger {
+            color: #e74c3c;
+        }
+
+        .text-muted {
+            color: #6c757d;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .badge-primary {
+            background: #3498db;
+        }
+
+        .badge-success {
+            background: #27ae60;
+        }
+
+        .badge-danger {
+            background: #e74c3c;
+        }
+
+        /* ====== ID SELECTOR ====== */
+        #main-heading {
+            color: #2c3e50;
+            font-size: 2.2rem;
+            border-bottom: 4px solid #3498db;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+
+        #unique-box {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        #unique-box h3 {
+            color: white;
+            margin: 0;
+        }
+
+        /* ====== DESCENDANT SELECTOR ====== */
+        .descendant-demo li {
+            padding: 8px 15px;
+            background: #f8f9fa;
+            margin-bottom: 5px;
+            border-radius: 4px;
+            list-style: none;
+        }
+
+        .descendant-demo li a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        .descendant-demo li a:hover {
+            text-decoration: underline;
+        }
+
+        /* ====== CHILD SELECTOR ====== */
+        .child-demo > li {
+            border-left: 4px solid #27ae60;
+            padding-left: 15px;
+        }
+
+        .child-demo > li > ul > li {
+            border-left: 4px solid #f39c12;
+            padding-left: 15px;
+        }
+
+        /* ====== ADJACENT SIBLING SELECTOR ====== */
+        h2 + p {
+            background: #e8f4f8;
+            padding: 10px 15px;
+            border-radius: 6px;
+            border-left: 4px solid #3498db;
+        }
+
+        /* ====== GENERAL SIBLING SELECTOR ====== */
+        h3 ~ p {
+            color: #555;
+            font-style: italic;
+        }
+
+        /* ====== ATTRIBUTE SELECTOR ====== */
+        [type="text"] {
+            border: 2px solid #3498db;
+            padding: 8px 12px;
+            border-radius: 6px;
+            width: 200px;
+            transition: border-color 0.3s ease;
+        }
+
+        [type="text"]:focus {
+            border-color: #27ae60;
+            outline: none;
+        }
+
+        [type="submit"] {
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 8px 25px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        [type="submit"]:hover {
+            background: #219a52;
+        }
+
+        [href^="https"] {
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        [href$=".pdf"]::after {
+            content: " 📄";
+        }
+
+        [title] {
+            border-bottom: 2px dotted #f39c12;
+            cursor: help;
+        }
+
+        /* ====== PSEUDO-CLASS SELECTORS ====== */
+        .pseudo-demo a {
+            display: inline-block;
+            padding: 8px 15px;
+            margin: 5px;
+            background: #e9ecef;
+            color: #2c3e50;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .pseudo-demo a:hover {
+            background: #3498db;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(52, 152, 219, 0.3);
+        }
+
+        .pseudo-demo a:active {
+            transform: scale(0.95);
+        }
+
+        .pseudo-demo a:visited {
+            color: #8e44ad;
+        }
+
+        .pseudo-demo input:focus {
+            border-color: #e74c3c;
+            outline: 2px solid rgba(231, 76, 60, 0.3);
+        }
+
+        .pseudo-demo li:first-child {
+            font-weight: bold;
+            color: #27ae60;
+        }
+
+        .pseudo-demo li:last-child {
+            color: #e74c3c;
+            font-style: italic;
+        }
+
+        .pseudo-demo li:nth-child(odd) {
+            background: #f8f9fa;
+        }
+
+        .pseudo-demo li:nth-child(even) {
+            background: #e9ecef;
+        }
+
+        /* ====== PSEUDO-ELEMENT SELECTORS ====== */
+        .pseudo-element-demo p::first-line {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .pseudo-element-demo p::first-letter {
+            font-size: 2.5rem;
+            color: #e74c3c;
+            float: left;
+            margin-right: 5px;
+            font-weight: bold;
+        }
+
+        .pseudo-element-demo p::before {
+            content: "📌 ";
+            color: #f39c12;
+        }
+
+        .pseudo-element-demo p::after {
+            content: " ✨";
+            color: #f39c12;
+        }
+
+        /* ====== COMBINED SELECTORS ====== */
+        .combined-demo div.box {
+            background: #f39c12;
+        }
+
+        .combined-demo .box.rounded {
+            background: #9b59b6;
+        }
+
+        .combined-demo #special-box.box {
+            background: #e74c3c;
+            width: 120px;
+            height: 120px;
+        }
+
+        /* ====== RESPONSIVE ====== */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .demo-section {
+                padding: 15px;
+            }
+            
+            .box {
+                width: 70px;
+                height: 70px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="main-heading">🎯 CSS Selectors Demonstration</h1>
+
+        <!-- ====== ELEMENT SELECTOR ====== -->
+        <section class="demo-section">
+            <h2>1. Element/Type Selector</h2>
+            <p>This paragraph is styled using the element selector.</p>
+            <p>All <code>&lt;p&gt;</code> elements get these styles.</p>
+            <h3>Subheading using h3 selector</h3>
+        </section>
+
+        <!-- ====== CLASS SELECTOR ====== -->
+        <section class="demo-section">
+            <h2>2. Class Selector</h2>
+            <p>Classes are denoted with a <span class="highlight">dot (.)</span> prefix.</p>
+            <p>Multiple classes can be applied: 
+                <span class="badge badge-primary">Primary</span>
+                <span class="badge badge-success">Success</span>
+                <span class="badge badge-danger">Danger</span>
+            </p>
+            <div>
+                <div class="box"></div>
+                <div class="box rounded"></div>
+                <div class="box shadow"></div>
+                <div class="box rounded shadow"></div>
+            </div>
+            <p>
+                <span class="text-success">✅ Success text</span>
+                <span class="text-danger">❌ Danger text</span>
+                <span class="text-muted">Muted text</span>
+            </p>
+        </section>
+
+        <!-- ====== ID SELECTOR ====== -->
+        <section class="demo-section">
+            <h2>3. ID Selector</h2>
+            <p>IDs are denoted with a <span class="highlight">hash (#)</span> prefix.</p>
+            <div id="unique-box">
+                <h3>✨ This box is styled using an ID selector</h3>
+                <p style="color: rgba(255,255,255,0.9);">IDs should be unique per page.</p>
+            </div>
+        </section>
+
+        <!-- ====== DESCENDANT SELECTOR ====== -->
+        <section class="demo-section">
+            <h2>4. Descendant Selector</h2>
+            <p>Selects elements <span class="highlight">nested</span> inside other elements.</p>
+            <ul class="descendant-demo">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a>
+                    <ul>
+                        <li><a href="#web">Web Development</a></li>
+                        <li><a href="#mobile">Mobile Apps</a></li>
+                    </ul>
+                </li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <p style="font-size: 0.85rem; color: #6c757d;">All <code>&lt;a&gt;</code> tags inside <code>.descendant-demo</code> are styled.</p>
+        </section>
+
+        <!-- ====== CHILD SELECTOR ====== -->
+        <section class="demo-section">
+            <h2>5. Child Selector</h2>
+            <p>Selects <span class="highlight">direct children</span> only using <code>&gt;</code>.</p>
+            <ul class="child-demo">
+                <li>Direct child - has green border
+                    <ul>
+                        <li>Grandchild - has orange border</li>
+                        <li>Grandchild - has orange border</li>
+                    </ul>
+                </li>
+                <li>Direct child - has green border
+                    <ul>
+                        <li>Grandchild - has orange border</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+
+        <!-- ====== ADJACENT SIBLING SELECTOR ====== -->
+        <section class="demo-section">
+            <h2>6. Adjacent Sibling Selector</h2>
+            <p>Selects the <span class="highlight">immediate</span> sibling using <code>+</code>.</p>
+            <h3>Heading 3</h3>
+            <p>This paragraph is immediately after h3, so it gets special styling.</p>
+            <p>This paragraph is NOT immediately after h3.</p>
+        </section>
+
+        <!-- ====== GENERAL SIBLING SELECTOR ====== -->
+        <section class="demo-section">
+            <h2>7. General Sibling Selector</h2>
+            <p>Selects all <span class="highlight">following</span> siblings using <code>~</code>.</p>
+            <h3>Another Heading 3</h3>
+            <p>This paragraph is after h3</p>
+            <p>This paragraph is also after h3</p>
+            <div>A div element (not a paragraph)</div>
+            <p>This paragraph is also after h3</p>
+        </section>
+
+        <!-- ====== ATTRIBUTE SELECTOR ====== -->
+        <section class="demo-section">
+            <h2>8. Attribute Selector</h2>
+            <p>Selects elements based on <span class="highlight">attributes</span>.</p>
+            <form>
+                <div>
+                    <label>Text Input: </label>
+                    <input type="text" placeholder="Type something...">
+                </div>
+                <div style="margin-top: 10px;">
+                    <input type="submit" value="Submit">
+                </div>
+            </form>
+            <div style="margin-top: 15px;">
+                <a href="https://example.com">Secure HTTPS Link</a>
+                <a href="http://example.com">HTTP Link</a>
+                <a href="document.pdf">PDF Document</a>
+            </div>
+            <p title="This is a tooltip">Hover over this text to see the tooltip.</p>
+        </section>
+
+        <!-- ====== PSEUDO-CLASS SELECTOR ====== -->
+        <section class="demo-section pseudo-demo">
+            <h2>9. Pseudo-Class Selector</h2>
+            <p>Selects elements in a <span class="highlight">special state</span>.</p>
+            <div>
+                <a href="#">Hover me</a>
+                <a href="#">Click me</a>
+                <a href="#">Visit me</a>
+            </div>
+            <div style="margin-top: 15px;">
+                <input type="text" placeholder="Focus on me..." style="padding: 8px 12px; border: 2px solid #ddd; border-radius: 6px; width: 200px;">
+            </div>
+            <ul style="margin-top: 15px; padding-left: 20px;">
+                <li>First item (bold)</li>
+                <li>Second item</li>
+                <li>Third item</li>
+                <li>Fourth item</li>
+                <li>Last item (italic)</li>
+            </ul>
+        </section>
+
+        <!-- ====== PSEUDO-ELEMENT SELECTOR ====== -->
+        <section class="demo-section pseudo-element-demo">
+            <h2>10. Pseudo-Element Selector</h2>
+            <p>Selects a <span class="highlight">specific part</span> of an element.</p>
+            <p>This paragraph has special styling for first-line and first-letter, plus before and after pseudo-elements.</p>
+            <p>Notice the 📌 before and ✨ after each paragraph.</p>
+        </section>
+
+        <!-- ====== COMBINED SELECTORS ====== -->
+        <section class="demo-section combined-demo">
+            <h2>11. Combined Selectors</h2>
+            <p>Combining selectors for <span class="highlight">more specificity</span>.</p>
+            <div>
+                <div class="box"></div>
+                <div class="box rounded"></div>
+                <div class="box" id="special-box"></div>
+            </div>
+            <ul style="margin-top: 15px; font-size: 0.9rem; color: #6c757d;">
+                <li>✅ First box: <code>.combined-demo div.box</code> (orange)</li>
+                <li>✅ Second box: <code>.combined-demo .box.rounded</code> (purple)</li>
+                <li>✅ Third box: <code>.combined-demo #special-box.box</code> (red, larger)</li>
+            </ul>
+        </section>
+    </div>
+</body>
+</html>

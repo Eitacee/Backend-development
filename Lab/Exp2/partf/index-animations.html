@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Animations & Transitions</title>
+    <style>
+        /* ====== BASE ====== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f4f8;
+            padding: 30px;
+            color: #2c3e50;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+
+        .section {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        h2 {
+            color: #2980b9;
+            margin-bottom: 15px;
+        }
+
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            margin: 15px 0;
+        }
+
+        /* ====== TRANSITIONS ====== */
+
+        .transition-box {
+            background: #3498db;
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .transition-box:hover {
+            transform: translateY(-5px) scale(1.05);
+            background: #e74c3c;
+            box-shadow: 0 10px 30px rgba(231, 76, 60, 0.3);
+            border-radius: 20px;
+        }
+
+        .transition-box.width:hover {
+            transform: none;
+            width: 200px;
+            background: #27ae60;
+        }
+
+        .transition-box.opacity {
+            background: #9b59b6;
+        }
+
+        .transition-box.opacity:hover {
+            opacity: 0.3;
+            transform: none;
+            background: #9b59b6;
+        }
+
+        .transition-box.rotate:hover {
+            transform: rotate(180deg);
+            background: #f39c12;
+            border-radius: 50%;
+        }
+
+        .transition-box.skew:hover {
+            transform: skewX(-10deg) skewY(5deg);
+            background: #1abc9c;
+        }
+
+        .transition-box.shadow:hover {
+            transform: none;
+            background: #e67e22;
+            box-shadow: 0 0 0 10px rgba(230, 126, 34, 0.3);
+        }
+
+        /* Multiple transitions */
+        .transition-box.multi {
+            background: #2ecc71;
+            transition: 
+                transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55),
+                background 0.4s ease,
+                border-radius 0.6s ease,
+                box-shadow 0.4s ease;
+        }
+
+        .transition-box.multi:hover {
+            transform: translateY(-10px) scale(1.1) rotate(5deg);
+            background: #e74c3c;
+            border-radius: 30px 0 30px 0;
+            box-shadow: 0 15px 40px rgba(231, 76, 60, 0.4);
+        }
+
+        /* ====== ANIMATIONS ====== */
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-30px); }
+            50% { transform: translateY(0); }
+            70% { transform: translateY(-15px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes slide-in {
+            0% { transform: translateX(-100px); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes rainbow {
+            0% { background: #e74c3c; }
+            16% { background: #f39c12; }
+            33% { background: #f1c40f; }
+            50% { background: #2ecc71; }
+            66% { background: #3498db; }
+            83% { background: #9b59b6; }
+            100% { background: #e74c3c; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-10px) rotate(-3deg); }
+            75% { transform: translateY(10px) rotate(3deg); }
+        }
+
+        @keyframes typewriter {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink {
+            0%, 100% { border-color: transparent; }
+            50% { border-color: #2c3e50; }
+        }
+
+        .animation-box {
+            background: #3498db;
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .animation-box.bounce {
+            animation: bounce 1.5s ease infinite;
+        }
+
+        .animation-box.pulse {
+            animation: pulse 1.5s ease infinite;
+        }
+
+        .animation-box.spin {
+            animation: spin 3s linear infinite;
+        }
+
+        .animation-box.slide-in {
+            animation: slide-in 0.8s ease forwards;
+        }
+
+        .animation-box.rainbow {
+            animation: rainbow 6s linear infinite;
+        }
+
+        .animation-box.float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Typewriter text */
+        .typewriter {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid #2c3e50;
+            animation: typewriter 3s steps(30) 1s forwards, blink 0.8s step-end infinite;
+            width: 0;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        /* ====== KEYFRAME DEMO ====== */
+        .keyframe-demo {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .keyframe-row {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .keyframe-row label {
+            font-weight: bold;
+            min-width: 120px;
+        }
+
+        .keyframe-ball {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #3498db;
+        }
+
+        .keyframe-ball.linear { animation: slide-in 2s linear infinite alternate; }
+        .keyframe-ball.ease { animation: slide-in 2s ease infinite alternate; }
+        .keyframe-ball.ease-in { animation: slide-in 2s ease-in infinite alternate; }
+        .keyframe-ball.ease-out { animation: slide-in 2s ease-out infinite alternate; }
+        .keyframe-ball.ease-in-out { animation: slide-in 2s ease-in-out infinite alternate; }
+        .keyframe-ball.bounce-timing { animation: slide-in 2s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite alternate; }
+
+        /* ====== CODE DISPLAY ====== */
+        .code-display {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px 20px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            overflow-x: auto;
+            margin-top: 15px;
+        }
+
+        .code-display .property { color: #f39c12; }
+        .code-display .value { color: #2ecc71; }
+        .code-display .selector { color: #e74c3c; }
+        .code-display .key { color: #9b59b6; }
+
+        /* ====== RESPONSIVE ====== */
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            .demo-grid { grid-template-columns: 1fr 1fr; }
+            .keyframe-row { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>✨ CSS Animations & Transitions</h1>
+
+        <!-- ====== TRANSITIONS ====== -->
+        <section class="section">
+            <h2>🔄 CSS Transitions</h2>
+            <p style="margin-bottom: 15px;">Transitions allow smooth changes between property values over a specified duration.</p>
+
+            <div class="demo-grid">
+                <div class="transition-box">Hover Me</div>
+                <div class="transition-box width">Width Change</div>
+                <div class="transition-box opacity">Opacity</div>
+                <div class="transition-box rotate">Rotate</div>
+                <div class="transition-box skew">Skew</div>
+                <div class="transition-box shadow">Shadow</div>
+                <div class="transition-box multi">Multi Transition</div>
+            </div>
+
+            <div class="code-display">
+                <span class="selector">.transition-box</span> { <br>
+                &nbsp;&nbsp;<span class="property">transition</span>: <span class="value">all 0.4s ease</span>; <br>
+                } <br><br>
+                <span class="selector">.transition-box:hover</span> { <br>
+                &nbsp;&nbsp;<span class="property">transform</span>: <span class="value">translateY(-5px) scale(1.05)</span>; <br>
+                &nbsp;&nbsp;<span class="property">background</span>: <span class="value">#e74c3c</span>; <br>
+                &nbsp;&nbsp;<span class="property">box-shadow</span>: <span class="value">0 10px 30px rgba(231,76,60,0.3)</span>; <br>
+                }
+            </div>
+        </section>
+
+        <!-- ====== ANIMATIONS ====== -->
+        <section class="section">
+            <h2>🎬 CSS Animations</h2>
+            <p style="margin-bottom: 15px;">Animations use <code>@keyframes</code> to define complex, multi-step animations.</p>
+
+            <div class="demo-grid">
+                <div class="animation-box bounce">Bounce</div>
+                <div class="animation-box pulse">Pulse</div>
+                <div class="animation-box spin">Spin</div>
+                <div class="animation-box slide-in">Slide In</div>
+                <div class="animation-box rainbow">Rainbow</div>
+                <div class="animation-box float">Float</div>
+            </div>
+
+            <div style="margin-top: 20px;">
+                <h3 style="color: #2c3e50; margin-bottom: 10px;">Typewriter Effect</h3>
+                <div style="background: #f8f9fa; padding: 20px; border-radius: 8px;">
+                    <span class="typewriter">CSS Animations are powerful!</span>
+                </div>
+            </div>
+
+            <div class="code-display">
+                <span class="key">@keyframes</span> <span class="selector">bounce</span> { <br>
+                &nbsp;&nbsp;<span class="value">0%</span>, <span class="value">100%</span> { <span class="property">transform</span>: <span class="value">translateY(0)</span>; } <br>
+                &nbsp;&nbsp;<span class="value">30%</span> { <span class="property">transform</span>: <span class="value">translateY(-30px)</span>; } <br>
+                &nbsp;&nbsp;<span class="value">50%</span> { <span class="property">transform</span>: <span class="value">translateY(0)</span>; } <br>
+                &nbsp;&nbsp;<span class="value">70%</span> { <span class="property">transform</span>: <span class="value">translateY(-15px)</span>; } <br>
+                } <br><br>
+                <span class="selector">.bounce</span> { <br>
+                &nbsp;&nbsp;<span class="property">animation</span>: <span class="value">bounce 1.5s ease infinite</span>; <br>
+                }
+            </div>
+        </section>
+
+        <!-- ====== TIMING FUNCTIONS ====== -->
+        <section class="section">
+            <h2>⏱️ Timing Functions</h2>
+            <p style="margin-bottom: 15px;">Different timing functions create different motion feels.</p>
+
+            <div class="keyframe-demo">
+                <div class="keyframe-row">
+                    <label>Linear:</label>
+                    <div class="keyframe-ball linear"></div>
+                    <span style="font-size: 0.85rem; color: #6c757d;">Constant speed</span>
+                </div>
+                <div class="keyframe-row">
+                    <label>Ease:</label>
+                    <div class="keyframe-ball ease"></div>
+                    <span style="font-size: 0.85rem; color: #6c757d;">Slow start, fast middle, slow end</span>
+                </div>
+                <div class="keyframe-row">
+                    <label>Ease-in:</label>
+                    <div class="keyframe-ball ease-in"></div>
+                    <span style="font-size: 0.85rem; color: #6c757d;">Slow start</span>
+                </div>
+                <div class="keyframe-row">
+                    <label>Ease-out:</label>
+                    <div class="keyframe-ball ease-out"></div>
+                    <span style="font-size: 0.85rem; color: #6c757d;">Slow end</span>
+                </div>
+                <div class="keyframe-row">
+                    <label>Ease-in-out:</label>
+                    <div class="keyframe-ball ease-in-out"></div>
+                    <span style="font-size: 0.85rem; color: #6c757d;">Slow start and end</span>
+                </div>
+                <div class="keyframe-row">
+                    <label>Bounce (cubic-bezier):</label>
+                    <div class="keyframe-ball bounce-timing"></div>
+                    <span style="font-size: 0.85rem; color: #6c757d;">Overshoot effect</span>
+                </div>
+            </div>
+
+            <div class="code-display">
+                <span class="comment">/* Timing functions for animations */</span> <br>
+                <span class="selector">.linear</span> { <span class="property">animation-timing-function</span>: <span class="value">linear</span>; } <br>
+                <span class="selector">.ease</span> { <span class="property">animation-timing-function</span>: <span class="value">ease</span>; } <br>
+                <span class="selector">.ease-in</span> { <span class="property">animation-timing-function</span>: <span class="value">ease-in</span>; } <br>
+                <span class="selector">.ease-out</span> { <span class="property">animation-timing-function</span>: <span class="value">ease-out</span>; } <br>
+                <span class="selector">.ease-in-out</span> { <span class="property">animation-timing-function</span>: <span class="value">ease-in-out</span>; } <br>
+                <span class="selector">.bounce-timing</span> { <br>
+                &nbsp;&nbsp;<span class="property">animation-timing-function</span>: <span class="value">cubic-bezier(0.68, -0.55, 0.265, 1.55)</span>; <br>
+                }
+            </div>
+        </section>
+    </div>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eisenhower Todo Matrix</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Eisenhower Todo Matrix</h1>
+            <a href="/tasks/new" class="btn">Add New Task</a>
+        </header>
+
+        <div class="matrix">
+            <!-- 1. Do (Urgent & Important) -->
+            <div class="quadrant do-quadrant">
+                <h2>Do (Urgent & Important)</h2>
+                <ul class="task-list">
+                    <% tasks.filter(t => t.isUrgent && t.isImportant).forEach(task => { %>
+                        <li class="task-item">
+                            <div class="task-content">
+                                <strong><%= task.title %></strong>
+                                <% if (task.description) { %>
+                                    <p><%= task.description %></p>
+                                <% } %>
+                            </div>
+                            <form action="/tasks/<%= task._id %>/delete" method="POST">
+                                <button type="submit" class="delete-btn">Delete</button>
+                            </form>
+                        </li>
+                    <% }) %>
+                    <% if (tasks.filter(t => t.isUrgent && t.isImportant).length === 0) { %>
+                        <p class="empty-msg">No tasks here</p>
+                    <% } %>
+                </ul>
+            </div>
+
+            <!-- 2. Schedule (Not Urgent & Important) -->
+            <div class="quadrant schedule-quadrant">
+                <h2>Schedule (Not Urgent & Important)</h2>
+                <ul class="task-list">
+                    <% tasks.filter(t => !t.isUrgent && t.isImportant).forEach(task => { %>
+                        <li class="task-item">
+                            <div class="task-content">
+                                <strong><%= task.title %></strong>
+                                <% if (task.description) { %>
+                                    <p><%= task.description %></p>
+                                <% } %>
+                            </div>
+                            <form action="/tasks/<%= task._id %>/delete" method="POST">
+                                <button type="submit" class="delete-btn">Delete</button>
+                            </form>
+                        </li>
+                    <% }) %>
+                    <% if (tasks.filter(t => !t.isUrgent && t.isImportant).length === 0) { %>
+                        <p class="empty-msg">No tasks here</p>
+                    <% } %>
+                </ul>
+            </div>
+
+            <!-- 3. Delegate (Urgent & Not Important) -->
+            <div class="quadrant delegate-quadrant">
+                <h2>Delegate (Urgent & Not Important)</h2>
+                <ul class="task-list">
+                    <% tasks.filter(t => t.isUrgent && !t.isImportant).forEach(task => { %>
+                        <li class="task-item">
+                            <div class="task-content">
+                                <strong><%= task.title %></strong>
+                                <% if (task.description) { %>
+                                    <p><%= task.description %></p>
+                                <% } %>
+                            </div>
+                            <form action="/tasks/<%= task._id %>/delete" method="POST">
+                                <button type="submit" class="delete-btn">Delete</button>
+                            </form>
+                        </li>
+                    <% }) %>
+                    <% if (tasks.filter(t => t.isUrgent && !t.isImportant).length === 0) { %>
+                        <p class="empty-msg">No tasks here</p>
+                    <% } %>
+                </ul>
+            </div>
+
+            <!-- 4. Eliminate (Not Urgent & Not Important) -->
+            <div class="quadrant eliminate-quadrant">
+                <h2>Eliminate (Not Urgent & Not Important)</h2>
+                <ul class="task-list">
+                    <% tasks.filter(t => !t.isUrgent && !t.isImportant).forEach(task => { %>
+                        <li class="task-item">
+                            <div class="task-content">
+                                <strong><%= task.title %></strong>
+                                <% if (task.description) { %>
+                                    <p><%= task.description %></p>
+                                <% } %>
+                            </div>
+                            <form action="/tasks/<%= task._id %>/delete" method="POST">
+                                <button type="submit" class="delete-btn">Delete</button>
+                            </form>
+                        </li>
+                    <% }) %>
+                    <% if (tasks.filter(t => !t.isUrgent && !t.isImportant).length === 0) { %>
+                        <p class="empty-msg">No tasks here</p>
+                    <% } %>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

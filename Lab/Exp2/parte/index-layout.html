@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Layout - Flexbox & Grid</title>
+    <style>
+        /* ====== RESET ====== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: #f0f4f8;
+            padding: 20px;
+            color: #2c3e50;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2c3e50;
+            border-bottom: 4px solid #3498db;
+            padding-bottom: 15px;
+        }
+
+        h2 {
+            color: #2980b9;
+            margin-bottom: 15px;
+        }
+
+        .section {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        /* ====== FLEXBOX DEMO ====== */
+
+        /* Flex Container Properties */
+        .flex-container {
+            display: flex;
+            background: #e9ecef;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            min-height: 150px;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .flex-container.column {
+            flex-direction: column;
+        }
+
+        .flex-container.wrap {
+            flex-wrap: wrap;
+        }
+
+        .flex-container.center {
+            justify-content: center;
+            align-items: center;
+        }
+
+        .flex-container.space-between {
+            justify-content: space-between;
+        }
+
+        .flex-container.space-around {
+            justify-content: space-around;
+        }
+
+        .flex-container.align-end {
+            align-items: flex-end;
+        }
+
+        .flex-item {
+            background: #3498db;
+            color: white;
+            padding: 20px;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: bold;
+            flex: 1;
+            min-width: 80px;
+            transition: all 0.3s ease;
+        }
+
+        .flex-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        .flex-item.varied {
+            flex: 0 1 auto;
+        }
+
+        .flex-item:nth-child(1) { background: #e74c3c; }
+        .flex-item:nth-child(2) { background: #27ae60; }
+        .flex-item:nth-child(3) { background: #f39c12; }
+        .flex-item:nth-child(4) { background: #9b59b6; }
+        .flex-item:nth-child(5) { background: #1abc9c; }
+
+        .flex-item.grow-1 { flex: 1; }
+        .flex-item.grow-2 { flex: 2; }
+        .flex-item.grow-3 { flex: 3; }
+
+        .flex-item.small { padding: 10px 20px; }
+        .flex-item.large { padding: 30px 20px; }
+
+        /* ====== GRID DEMO ====== */
+
+        .grid-container {
+            display: grid;
+            gap: 15px;
+            background: #e9ecef;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .grid-container.cols-2 {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .grid-container.cols-3 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .grid-container.cols-4 {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .grid-container.cols-auto {
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        }
+
+        .grid-container.rows-2 {
+            grid-template-rows: auto auto;
+        }
+
+        .grid-container.asymmetric {
+            grid-template-columns: 1fr 2fr 1fr;
+        }
+
+        .grid-item {
+            background: #3498db;
+            color: white;
+            padding: 25px 15px;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .grid-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        .grid-item:nth-child(1) { background: #e74c3c; }
+        .grid-item:nth-child(2) { background: #27ae60; }
+        .grid-item:nth-child(3) { background: #f39c12; }
+        .grid-item:nth-child(4) { background: #9b59b6; }
+        .grid-item:nth-child(5) { background: #1abc9c; }
+        .grid-item:nth-child(6) { background: #e67e22; }
+        .grid-item:nth-child(7) { background: #2ecc71; }
+        .grid-item:nth-child(8) { background: #e74c3c; }
+        .grid-item:nth-child(9) { background: #3498db; }
+
+        .grid-item.span-2 {
+            grid-column: span 2;
+        }
+
+        .grid-item.span-row-2 {
+            grid-row: span 2;
+        }
+
+        /* ====== RESPONSIVE ====== */
+        @media (max-width: 768px) {
+            .grid-container.cols-2,
+            .grid-container.cols-3,
+            .grid-container.cols-4,
+            .grid-container.asymmetric {
+                grid-template-columns: 1fr;
+            }
+
+            .grid-item.span-2 {
+                grid-column: span 1;
+            }
+
+            .flex-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .flex-item.grow-1,
+            .flex-item.grow-2,
+            .flex-item.grow-3 {
+                flex: 1;
+            }
+        }
+
+        /* ====== CODE DISPLAY ====== */
+        .code-display {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px 20px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            overflow-x: auto;
+            margin-top: 15px;
+        }
+
+        .code-display .property {
+            color: #f39c12;
+        }
+
+        .code-display .value {
+            color: #2ecc71;
+        }
+
+        .code-display .selector {
+            color: #e74c3c;
+        }
+
+        .code-display .comment {
+            color: #6c757d;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📐 CSS Layout Techniques</h1>
+
+        <!-- ====== FLEXBOX SECTION ====== -->
+        <section class="section">
+            <h2>🔲 Flexbox Layout</h2>
+            <p style="margin-bottom: 20px;">Flexbox is a one-dimensional layout model for distributing space and aligning items.</p>
+
+            <!-- Flex: Row -->
+            <h3>Flex Direction: Row (Default)</h3>
+            <div class="flex-container">
+                <div class="flex-item">1</div>
+                <div class="flex-item">2</div>
+                <div class="flex-item">3</div>
+                <div class="flex-item">4</div>
+                <div class="flex-item">5</div>
+            </div>
+            <div class="code-display">
+                <span class="selector">.flex-container</span> { <br>
+                &nbsp;&nbsp;<span class="property">display</span>: <span class="value">flex</span>; <br>
+                &nbsp;&nbsp;<span class="property">flex-direction</span>: <span class="value">row</span>; <br>
+                &nbsp;&nbsp;<span class="property">gap</span>: <span class="value">10px</span>; <br>
+                }
+            </div>
+
+            <!-- Flex: Column -->
+            <h3 style="margin-top: 25px;">Flex Direction: Column</h3>
+            <div class="flex-container column" style="min-height: 200px;">
+                <div class="flex-item">1</div>
+                <div class="flex-item">2</div>
+                <div class="flex-item">3</div>
+            </div>
+
+            <!-- Flex: Center -->
+            <h3 style="margin-top: 25px;">Justify & Align: Center</h3>
+            <div class="flex-container center" style="min-height: 150px;">
+                <div class="flex-item" style="flex: 0 1 auto; padding: 15px 30px;">Centered</div>
+            </div>
+
+            <!-- Flex: Space Between -->
+            <h3 style="margin-top: 25px;">Justify: Space Between</h3>
+            <div class="flex-container space-between">
+                <div class="flex-item" style="flex: 0 1 auto; padding: 15px 25px;">Item</div>
+                <div class="flex-item" style="flex: 0 1 auto; padding: 15px 25px;">Item</div>
+                <div class="flex-item" style="flex: 0 1 auto; padding: 15px 25px;">Item</div>
+            </div>
+
+            <!-- Flex: Grow -->
+            <h3 style="margin-top: 25px;">Flex: Grow</h3>
+            <div class="flex-container">
+                <div class="flex-item grow-1">flex: 1</div>
+                <div class="flex-item grow-2">flex: 2</div>
+                <div class="flex-item grow-3">flex: 3</div>
+            </div>
+            <div class="code-display">
+                <span class="selector">.grow-1</span> { <span class="property">flex</span>: <span class="value">1</span>; } &nbsp;&nbsp;
+                <span class="selector">.grow-2</span> { <span class="property">flex</span>: <span class="value">2</span>; } &nbsp;&nbsp;
+                <span class="selector">.grow-3</span> { <span class="property">flex</span>: <span class="value">3</span>; }
+            </div>
+
+            <!-- Flex: Wrap -->
+            <h3 style="margin-top: 25px;">Flex: Wrap</h3>
+            <div class="flex-container wrap" style="min-height: auto;">
+                <div class="flex-item" style="flex: 0 1 150px;">Item 1</div>
+                <div class="flex-item" style="flex: 0 1 150px;">Item 2</div>
+                <div class="flex-item" style="flex: 0 1 150px;">Item 3</div>
+                <div class="flex-item" style="flex: 0 1 150px;">Item 4</div>
+                <div class="flex-item" style="flex: 0 1 150px;">Item 5</div>
+                <div class="flex-item" style="flex: 0 1 150px;">Item 6</div>
+            </div>
+        </section>
+
+        <!-- ====== GRID SECTION ====== -->
+        <section class="section">
+            <h2>🔲 CSS Grid Layout</h2>
+            <p style="margin-bottom: 20px;">CSS Grid is a two-dimensional layout system for creating complex layouts.</p>
+
+            <!-- Grid: 2 Columns -->
+            <h3>Grid: 2 Columns</h3>
+            <div class="grid-container cols-2">
+                <div class="grid-item">1</div>
+                <div class="grid-item">2</div>
+                <div class="grid-item">3</div>
+                <div class="grid-item">4</div>
+            </div>
+            <div class="code-display">
+                <span class="selector">.grid-container</span> { <br>
+                &nbsp;&nbsp;<span class="property">display</span>: <span class="value">grid</span>; <br>
+                &nbsp;&nbsp;<span class="property">grid-template-columns</span>: <span class="value">1fr 1fr</span>; <br>
+                &nbsp;&nbsp;<span class="property">gap</span>: <span class="value">15px</span>; <br>
+                }
+            </div>
+
+            <!-- Grid: 3 Columns -->
+            <h3 style="margin-top: 25px;">Grid: 3 Columns</h3>
+            <div class="grid-container cols-3">
+                <div class="grid-item">1</div>
+                <div class="grid-item">2</div>
+                <div class="grid-item">3</div>
+                <div class="grid-item">4</div>
+                <div class="grid-item">5</div>
+                <div class="grid-item">6</div>
+            </div>
+
+            <!-- Grid: Asymmetric -->
+            <h3 style="margin-top: 25px;">Grid: Asymmetric Columns</h3>
+            <div class="grid-container asymmetric">
+                <div class="grid-item">1fr</div>
+                <div class="grid-item">2fr</div>
+                <div class="grid-item">1fr</div>
+                <div class="grid-item">1fr</div>
+                <div class="grid-item">2fr</div>
+                <div class="grid-item">1fr</div>
+            </div>
+            <div class="code-display">
+                <span class="selector">.grid-container</span> { <br>
+                &nbsp;&nbsp;<span class="property">grid-template-columns</span>: <span class="value">1fr 2fr 1fr</span>; <br>
+                }
+            </div>
+
+            <!-- Grid: Auto-fit -->
+            <h3 style="margin-top: 25px;">Grid: Auto-fit (Responsive)</h3>
+            <div class="grid-container cols-auto">
+                <div class="grid-item">1</div>
+                <div class="grid-item">2</div>
+                <div class="grid-item">3</div>
+                <div class="grid-item">4</div>
+                <div class="grid-item">5</div>
+            </div>
+            <div class="code-display">
+                <span class="selector">.grid-container</span> { <br>
+                &nbsp;&nbsp;<span class="property">grid-template-columns</span>: <span class="value">repeat(auto-fit, minmax(150px, 1fr))</span>; <br>
+                }
+            </div>
+
+            <!-- Grid: Span -->
+            <h3 style="margin-top: 25px;">Grid: Spanning Columns</h3>
+            <div class="grid-container cols-3">
+                <div class="grid-item">1</div>
+                <div class="grid-item span-2">2 (span 2)</div>
+                <div class="grid-item">3</div>
+                <div class="grid-item">4</div>
+                <div class="grid-item">5</div>
+                <div class="grid-item">6</div>
+            </div>
+            <div class="code-display">
+                <span class="selector">.span-2</span> { <br>
+                &nbsp;&nbsp;<span class="property">grid-column</span>: <span class="value">span 2</span>; <br>
+                }
+            </div>
+
+            <!-- Grid: Row Span -->
+            <h3 style="margin-top: 25px;">Grid: Row Span</h3>
+            <div class="grid-container cols-3 rows-2">
+                <div class="grid-item">1</div>
+                <div class="grid-item span-row-2">2 (span 2 rows)</div>
+                <div class="grid-item">3</div>
+                <div class="grid-item">4</div>
+                <div class="grid-item">5</div>
+            </div>
+            <div class="code-display">
+                <span class="selector">.span-row-2</span> { <br>
+                &nbsp;&nbsp;<span class="property">grid-row</span>: <span class="value">span 2</span>; <br>
+                }
+            </div>
+        </section>
+
+        <!-- ====== COMPARISON SECTION ====== -->
+        <section class="section">
+            <h2>📊 Flexbox vs Grid Comparison</h2>
+            <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+                <thead>
+                    <tr style="background: #2c3e50; color: white;">
+                        <th style="padding: 12px 15px; text-align: left;">Feature</th>
+                        <th style="padding: 12px 15px; text-align: left; background: #3498db;">Flexbox</th>
+                        <th style="padding: 12px 15px; text-align: left; background: #27ae60;">Grid</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px 15px; font-weight: bold;">Dimensionality</td>
+                        <td style="padding: 10px 15px;">One-dimensional (row/column)</td>
+                        <td style="padding: 10px 15px;">Two-dimensional (rows + columns)</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee; background: #f8f9fa;">
+                        <td style="padding: 10px 15px; font-weight: bold;">Best For</td>
+                        <td style="padding: 10px 15px;">Components, nav bars, small layouts</td>
+                        <td style="padding: 10px 15px;">Page layouts, complex grids</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px 15px; font-weight: bold;">Alignment</td>
+                        <td style="padding: 10px 15px;">Easier alignment in one direction</td>
+                        <td style="padding: 10px 15px;">More control over both axes</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee; background: #f8f9fa;">
+                        <td style="padding: 10px 15px; font-weight: bold;">Item Sizing</td>
+                        <td style="padding: 10px 15px;">Items size based on content</td>
+                        <td style="padding: 10px 15px;">Items size based on grid cells</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px 15px; font-weight: bold;">Browser Support</td>
+                        <td style="padding: 10px 15px; color: #27ae60;">✅ Excellent</td>
+                        <td style="padding: 10px 15px; color: #27ae60;">✅ Excellent</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+</body>
+</html>
