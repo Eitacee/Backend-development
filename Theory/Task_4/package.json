@@ -12,7 +12,7 @@
     "session",
     "express-session"
   ],
-  "author": "Akshat Mamgain",
+  "author": "Prince Kandari",
   "license": "ISC",
   "dependencies": {
     "express": "^4.19.2",

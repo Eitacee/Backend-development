@@ -4,8 +4,8 @@
 To implement and understand session management in a Node.js web application using the Express framework and `express-session` middleware.
 
 ## Student Information
-- **Name:** Akshat Mamgain
-- **SAP ID:** 590014875
+- **Name:** Prince Kandari
+- **SAP ID:** 590014595
 
 ## Technologies Used
 - Node.js
@@ -18,7 +18,7 @@ To implement and understand session management in a Node.js web application usin
 
 ## What is Implemented
 1. **Middleware Initialization**: Configures `express-session` with secret key, `resave: false`, `saveUninitialized: true`, and cookie expiration of 1 minute (`maxAge: 60000`).
-2. **GET `/login`**: Sets `req.session.username` to `AkshatMamgain` (or accepts `?user=Name`).
+2. **GET `/login`**: Sets `req.session.username` to `PrinceKandari` (or accepts `?user=Name`).
 3. **GET `/profile`**: Verifies if `req.session.username` exists; displays personalized greeting if logged in, or prompts user to log in first.
 4. **GET `/logout`**: Destroys the active session using `req.session.destroy()`.
 

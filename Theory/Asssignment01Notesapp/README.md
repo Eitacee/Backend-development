@@ -1,5 +1,8 @@
 # My Notes
 
+- **Name:** Prince Kandari
+- **SAP ID:** 590014595
+
 A simple **Notes Management Application** built with **Node.js**, **Express**, **EJS**, and **MongoDB**.
 
 ## Features

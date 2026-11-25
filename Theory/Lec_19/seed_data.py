@@ -50,7 +50,7 @@ try:
     s1 = db.query(Student).filter_by(email="akshat@upes.ac.in").first()
     if not s1:
         s1 = Student(
-            name="Akshat Mamgain",
+            name="Prince Kandari",
             email="akshat@upes.ac.in",
             branch="CSE",
             enrollment_date=date(2024, 8, 1),

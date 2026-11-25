@@ -4,8 +4,8 @@
 To design and style web documents using various Cascading Style Sheets (CSS) techniques including External, Internal, and Inline styles, CSS Selectors, Box Model, Responsive Layouts (Flexbox and Grid), and CSS Animations & Transitions.
 
 ## Student Information
-- **Name:** Akshat Mamgain
-- **SAP ID:** 590014875
+- **Name:** Prince Kandari
+- **SAP ID:** 590014595
 
 ## Technologies Used
 - HTML5

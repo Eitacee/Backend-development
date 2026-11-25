@@ -1,5 +1,8 @@
 # Backend Lab
 
+- **Name:** Prince Kandari
+- **SAP ID:** 590014595
+
 This directory contains the complete set of practical laboratory experiments completed as part of the **Backend Development Lab** coursework.
 
 The experiments focus on implementing core backend concepts across diverse technology stacks, web frameworks, templating systems, database layers, and containerized architectures.

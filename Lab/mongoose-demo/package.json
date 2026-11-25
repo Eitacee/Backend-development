@@ -13,7 +13,7 @@
     "mongodb",
     "mongoose"
   ],
-  "author": "Akshat Mamgain",
+  "author": "Prince Kandari",
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {

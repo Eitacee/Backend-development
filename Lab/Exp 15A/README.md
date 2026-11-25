@@ -1,5 +1,7 @@
 # Experiment 15: Django To-Do Application
 
+- **Name:** Prince Kandari
+
 **Student Information:**  
 - **SAP ID:** 590014595  
 - **Subject:** Backend Development Lab  

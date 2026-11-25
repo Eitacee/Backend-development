@@ -4,8 +4,8 @@
 **CO3** – Build complete RESTful API endpoints with proper request handling and response formatting.
 
 ## Student Information
-- **Name:** Akshat Mamgain
-- **SAP ID:** 590014875
+- **Name:** Prince Kandari
+- **SAP ID:** 590014595
 
 ## Technologies Used
 - **FastAPI**

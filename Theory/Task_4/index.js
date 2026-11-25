@@ -25,7 +25,7 @@ app.get('/', (req, res) => {
 
 // Set session variable (Login)
 app.get('/login', (req, res) => {
-    const user = req.query.user || 'AkshatMamgain';
+    const user = req.query.user || 'PrinceKandari';
     req.session.username = user;
     res.send(`Session started for ${req.session.username}. <a href="/profile">View Profile</a> | <a href="/logout">Logout</a>`);
 });

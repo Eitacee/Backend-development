@@ -23,7 +23,7 @@ students: List[Student] = [
     Student(id=1, name="Aarav", branch="CSE"),
     Student(id=2, name="Diya", branch="ECE"),
     Student(id=3, name="Rohan", branch="IT"),
-    Student(id=4, name="Akshat Mamgain", branch="CSE", sap_id=590014875),
+    Student(id=4, name="Prince Kandari", branch="CSE", sap_id=590014595),
 ]
 
 next_id = 5

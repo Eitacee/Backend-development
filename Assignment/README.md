@@ -1,5 +1,8 @@
 # Coursework Assignments
 
+- **Name:** Prince Kandari
+- **SAP ID:** 590014595
+
 This directory contains individual assignments and theoretical research papers completed as part of the Backend Development coursework.
 
 ---
