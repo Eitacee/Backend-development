@@ -4,8 +4,8 @@
 To build an interactive and responsive web-based Notes Application with complete CRUD functionality (Create, Read, Update, Delete) and client-side persistence using the HTML5 `localStorage` API.
 
 ## Student Information
-- **Name:** Akshat Mamgain
-- **SAP ID:** 590014875
+- **Name:** Prince Kandari
+- **SAP ID:** 590014595
 
 ## Technologies Used
 - HTML5
