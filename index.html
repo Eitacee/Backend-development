@@ -1,17 +1,689 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Backend Development - Eitacee</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Backend Development Portfolio | Prince Kandari</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --card-bg: rgba(22, 30, 49, 0.75);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --card-hover: rgba(30, 41, 69, 0.95);
+      --accent: #6366f1;
+      --accent-glow: rgba(99, 102, 241, 0.35);
+      --accent-secondary: #06b6d4;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --success: #10b981;
+      --warning: #f59e0b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(circle at 15% 15%, #151d38 0%, #0b0f19 55%, #05070d 100%);
+      color: var(--text-main);
+      min-height: 100vh;
+      line-height: 1.6;
+      padding-bottom: 60px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header & Hero */
+    header {
+      padding: 48px 0 32px;
+      text-align: center;
+      position: relative;
+    }
+
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(99, 102, 241, 0.15);
+      border: 1px solid rgba(99, 102, 241, 0.35);
+      color: #a5b4fc;
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+
+    .badge-pill .dot {
+      width: 8px;
+      height: 8px;
+      background: #22c55e;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #22c55e;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      background: linear-gradient(135deg, #ffffff 30%, #a5b4fc 70%, #67e8f9 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 12px;
+    }
+
+    .student-meta {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+    }
+
+    .student-meta span strong {
+      color: var(--text-main);
+    }
+
+    .header-actions {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 22px;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #6366f1, #4f46e5);
+      color: #fff;
+      box-shadow: 0 4px 20px var(--accent-glow);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(99, 102, 241, 0.5);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--card-border);
+      color: var(--text-main);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.12);
+      transform: translateY(-2px);
+    }
+
+    /* Controls: Search & Filter Tabs */
+    .controls-wrapper {
+      margin: 36px 0 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .search-box {
+      width: 100%;
+      position: relative;
+    }
+
+    .search-input {
+      width: 100%;
+      background: rgba(18, 26, 43, 0.8);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 14px 20px 14px 44px;
+      color: #fff;
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .search-input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 1.1rem;
+    }
+
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tab-btn {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      padding: 8px 18px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .tab-btn:hover {
+      color: var(--text-main);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .tab-btn.active {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+      box-shadow: 0 4px 14px var(--accent-glow);
+    }
+
+    /* Grid Layout */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 24px;
+      backdrop-filter: blur(12px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(99, 102, 241, 0.4);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+    }
+
+    .card-top {
+      margin-bottom: 18px;
+    }
+
+    .card-badge-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .type-badge {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    .badge-live {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.35);
+    }
+
+    .badge-lab {
+      background: rgba(59, 130, 246, 0.15);
+      color: #60a5fa;
+      border: 1px solid rgba(59, 130, 246, 0.35);
+    }
+
+    .badge-theory {
+      background: rgba(168, 85, 247, 0.15);
+      color: #c084fc;
+      border: 1px solid rgba(168, 85, 247, 0.35);
+    }
+
+    .badge-assignment {
+      background: rgba(245, 158, 11, 0.15);
+      color: #fbbf24;
+      border: 1px solid rgba(245, 158, 11, 0.35);
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 8px;
+      line-height: 1.35;
+    }
+
+    .card-desc {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 14px 0 18px;
+    }
+
+    .tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      background: rgba(255, 255, 255, 0.05);
+      color: #cbd5e1;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: auto;
+    }
+
+    .card-btn {
+      flex: 1;
+      text-align: center;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .card-btn-launch {
+      background: #10b981;
+      color: #042f1a;
+      font-weight: 700;
+    }
+
+    .card-btn-launch:hover {
+      background: #34d399;
+      box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+    }
+
+    .card-btn-code {
+      background: rgba(255, 255, 255, 0.08);
+      color: #e2e8f0;
+      border: 1px solid var(--card-border);
+    }
+
+    .card-btn-code:hover {
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 60px;
+      text-align: center;
+      padding: 28px 0;
+      border-top: 1px solid var(--card-border);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: #a5b4fc;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>Backend Development Projects</h1>
-    <p>SAP ID: 590014595</p>
-    <ul>
-        <li><a href="Lab/">Lab Projects</a></li>
-        <li><a href="Theory/">Theory Projects</a></li>
-    </ul>
+
+  <div class="container">
+    <header>
+      <div class="badge-pill">
+        <span class="dot"></span> Backend Development Coursework Portfolio
+      </div>
+      <h1>Backend Engineering Showcase</h1>
+      <div class="student-meta">
+        <span>👨‍💻 Student: <strong>Prince Kandari</strong></span>
+        <span>🆔 SAP ID: <strong>590014595</strong></span>
+        <span>🎓 Degree: <strong>B.Tech Full Stack</strong></span>
+      </div>
+      <div class="header-actions">
+        <a href="https://github.com/Eitacee/Backend-development" target="_blank" class="btn btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub Repository
+        </a>
+        <a href="#projects" class="btn btn-secondary">Explore Tasks & Demos ↓</a>
+      </div>
+    </header>
+
+    <div class="controls-wrapper" id="projects">
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchInput" class="search-input" placeholder="Search by topic, framework, or experiment (e.g., Express, Django, MongoDB, CSS, Notes)...">
+      </div>
+
+      <div class="tabs">
+        <button class="tab-btn active" data-filter="all">All Modules (<span id="count-all">0</span>)</button>
+        <button class="tab-btn" data-filter="live">🚀 Live Interactive Apps (<span id="count-live">0</span>)</button>
+        <button class="tab-btn" data-filter="lab">🧪 Lab Experiments (<span id="count-lab">0</span>)</button>
+        <button class="tab-btn" data-filter="theory">📖 Theory & Architecture (<span id="count-theory">0</span>)</button>
+        <button class="tab-btn" data-filter="assignment">📝 Assignments (<span id="count-assignment">0</span>)</button>
+      </div>
+    </div>
+
+    <div class="grid" id="projectGrid">
+      <!-- Cards rendered dynamically via JavaScript for clean filtering -->
+    </div>
+
+    <footer>
+      <p>Backend Development Academic Repository & Portfolio • Student: <strong>Prince Kandari</strong> (SAP: 590014595)</p>
+      <p style="margin-top: 6px;">Hosted with GitHub Pages • <a href="https://github.com/Eitacee/Backend-development">View on GitHub</a></p>
+    </footer>
+  </div>
+
+  <script>
+    const projects = [
+      {
+        title: "Assignment 1: Notes App",
+        category: ["assignment", "live"],
+        badgeText: "Live Web App",
+        badgeClass: "badge-live",
+        desc: "Interactive note-taking web application with dynamic DOM rendering, inline editing, and browser localStorage persistence.",
+        tags: ["JavaScript", "LocalStorage", "HTML5", "CSS3"],
+        liveUrl: "./Assignment/notes-app/index.html",
+        codeUrl: "https://github.com/Eitacee/Backend-development/tree/main/Assignment/notes-app"
+      },
+      {
+        title: "Assignment 2: PostgreSQL JSONB Analysis",
+        category: ["assignment", "theory"],
+        badgeText: "Research Paper",
+        badgeClass: "badge-assignment",
+        desc: "In-depth study on PostgreSQL JSONB vs document NoSQL databases, GIN indexing techniques, and JSON query operators (->, ->>, @>).",
+        tags: ["PostgreSQL", "JSONB", "GIN Indexing", "SQL vs NoSQL"],
+        codeUrl: "https://github.com/Eitacee/Backend-development/tree/main/Assignment/Assignment2_PostgreSQL_JSONB"
+      },
+      {
+        title: "Exp 1: HTML5 Master Element Showcase",
+        category: ["lab", "live"],
+        badgeText: "Live Web App",
+        badgeClass: "badge-live",
+        desc: "Comprehensive web document demonstrating all HTML5 semantic layout tags, interactive form elements, Canvas 2D, SVG, and multimedia.",
+        tags: ["HTML5", "Semantic Elements", "Canvas", "SVG", "Forms"],
+        liveUrl: "./Lab/Exp_01/code.html",
+        codeUrl: "https://github.com/Eitacee/Backend-development/tree/main/Lab/Exp_01"
+      },
+      {
+        title: "Exp 2: 6-Part CSS Master Experiment",
+        category: ["lab", "live"],
+        badgeText: "Live Web App",
+        badgeClass: "badge-live",
+        desc: "Comprehensive 6-part stylesheet suite: External, Internal, Inline, Advanced CSS Selectors, Flexbox/Grid Layouts, and Keyframe Animations.",
+        tags: ["CSS3", "Flexbox", "CSS Grid", "Animations", "Selectors"],
+        liveUrl: "./Lab/Exp2/parte/index-layout.html",
+        codeUrl: "https://github.com/Eitacee/Backend-development/tree/main/Lab/Exp2"
+      },
+      {
+        title: "Exp 7 & 8: ES6 JavaScript To-Do App",
+        category: ["lab", "live"],
+        badgeText: "Live Web App",
+        badgeClass: "badge-live",
+        desc: "Modern JavaScript application using ES6 Classes (class Task), destructuring, spread syntax, and event delegation for reactive task management.",
+        tags: ["JavaScript ES6+", "DOM", "Event Delegation", "Classes"],
+        liveUrl: "./Lab/Exp7_8/index.html",
+        codeUrl: "https://github.com/Eitacee/Backend-development/tree/main/Lab/Exp7_8"
+      },
+      {
+        title: "Exp 12(A): Express.js EJS Dynamic SSR",
+        category: ["lab"],
+        badgeText: "Lab Experiment",
+        badgeClass: "badge-lab",
+        desc: "Express.js web application implementing parameterized routes, query calculator, response formatting, and dynamic EJS template rendering.",
+        tags: ["Node.js", "Express.js", "EJS", "SSR"],
+        codeUrl: "https://github.com/Eitacee/Backend-development/tree/main/Lab/Exp12_A"
+      },
+      {
+        title: "Exp 12(B): Cookies & Session State",
+        category: ["lab"],
+        badgeText: "Lab Experiment",
+        badgeClass: "badge-lab",
+        desc: "Backend state tracking utilizing cookie-parser and express-session middleware for secure server-side session identification.",
+        tags: ["Express.js", "Cookies", "Sessions", "State Management"],
+        codeUrl: "https://github.com/Eitacee/Backend-development/tree/main/Lab/Exp12_B"
+      },
+      {
+        title: "Exp 13: MongoDB ODM with Mongoose",
+        category: ["lab"],
+        badgeText: "Lab Experiment",
+        badgeClass: "badge-lab",
+        desc: "MongoDB integration with Mongoose ODM schemas, field validators, enum checks, and password hashing authentication flows.",
+        tags: ["MongoDB", "Mongoose", "NoSQL", "Schemas", "Validation"],
+        codeUrl: "https://github.com/Eitacee/Backend-development/tree/main/Lab/mongoose-demo"
+      },
+      {
+        title: "Exp 15: Baseline Django To-Do Application",
+        category: ["lab"],
+        badgeText: "Lab Experiment",
+        badgeClass: "badge-lab",
+        desc: "Django MVT (Model-View-Template) architecture task manager with SQLite database, ORM queries, and administrative portal.",
+        tags: ["Django", "Python", "MVT", "SQLite", "ORM"],
+        codeUrl: "https://github.com/Eitacee/Backend-development/tree/main/Lab/Exp15/django_todo_app"
+      },
+      {
+        title: "Exp 15B: Multi-App Django & UV Management",
+        category: ["lab"],
+        badgeText: "Lab Experiment",
+        badgeClass: "badge-lab",
+        desc: "Modular Django system featuring todo, tasks, and student_api external proxy, alongside a project powered by modern Python uv package manager.",
+        tags: ["Django", "uv", "Multi-App", "Proxy API"],
+        codeUrl: "https://github.com/Eitacee/Backend-development/tree/main/Lab/Exp15B"
+      },
+      {
+        title: "Exam 01B: Eisenhower Matrix Todo App",
+        category: ["lab"],
+        badgeText: "Lab Exam",
+        badgeClass: "badge-lab",
+        desc: "Server-side rendered (SSR) Eisenhower Matrix Todo web application built with Node.js, Express, MongoDB native driver, and EJS.",
+        tags: ["Node.js", "Express", "MongoDB", "EJS", "Eisenhower Matrix"],
+        codeUrl: "https://github.com/Eitacee/Backend-development/tree/main/Lab/Exam01B"
+      },
+      {
+        title: "Theory Task 1: Express SSR Dynamic Templating",
+        category: ["theory"],
+        badgeText: "Theory Module",
+        badgeClass: "badge-theory",
+        desc: "Express server rendering dynamic views using EJS with home and student catalog pages.",
+        tags: ["Express.js", "EJS", "SSR", "Views"],
+        codeUrl: "https://github.com/Eitacee/Backend-development/tree/main/Theory/Task_1"
+      },
+      {
+        title: "Theory Task 2 & 3: Flask & FastAPI CRUD",
+        category: ["theory"],
+        badgeText: "Theory Module",
+        badgeClass: "badge-theory",
+        desc: "Microframework routing in Flask and high-performance REST APIs in FastAPI with Pydantic BaseModel validation schemas.",
+        tags: ["FastAPI", "Flask", "Pydantic", "CRUD", "Python"],
+        codeUrl: "https://github.com/Eitacee/Backend-development/tree/main/Theory/Task_3"
+      },
+      {
+        title: "Theory Task 4: Express Session Management",
+        category: ["theory"],
+        badgeText: "Theory Module",
+        badgeClass: "badge-theory",
+        desc: "Session handling, counter tracking, and authentication state management with express-session.",
+        tags: ["Express.js", "Sessions", "Middleware"],
+        codeUrl: "https://github.com/Eitacee/Backend-development/tree/main/Theory/Task_4"
+      },
+      {
+        title: "Theory Lec 07: LocalStorage To-Do",
+        category: ["theory", "live"],
+        badgeText: "Live Web App",
+        badgeClass: "badge-live",
+        desc: "Client-side interactive To-Do manager with browser localStorage caching, JSON serialization, and dynamic DOM updating.",
+        tags: ["JavaScript", "LocalStorage", "HTML5"],
+        liveUrl: "./Theory/Lec_07/index.html",
+        codeUrl: "https://github.com/Eitacee/Backend-development/tree/main/Theory/Lec_07"
+      },
+      {
+        title: "Theory Lec 08: FastAPI Jinja2 HTML Rendering",
+        category: ["theory"],
+        badgeText: "Theory Module",
+        badgeClass: "badge-theory",
+        desc: "Server-side template rendering in FastAPI using Jinja2Templates for dynamic student catalogs.",
+        tags: ["FastAPI", "Jinja2", "SSR", "Python"],
+        codeUrl: "https://github.com/Eitacee/Backend-development/tree/main/Theory/Lec_08"
+      },
+      {
+        title: "Theory Lec 19: Relational REST API (FastAPI + SQLAlchemy)",
+        category: ["theory"],
+        badgeText: "Theory Module",
+        badgeClass: "badge-theory",
+        desc: "Relational database modeling with SQLite and SQLAlchemy ORM: Student, Course, Department, Enrollment, seed data scripts, and test suite.",
+        tags: ["FastAPI", "SQLAlchemy", "SQLite", "ORM", "Relational Models"],
+        codeUrl: "https://github.com/Eitacee/Backend-development/tree/main/Theory/Lec_19"
+      },
+      {
+        title: "Unit 2: Data Model Validation (Pydantic v2)",
+        category: ["theory"],
+        badgeText: "Theory Module",
+        badgeClass: "badge-theory",
+        desc: "Advanced Pydantic v2 data model validation: Field constraints, EmailStr validation, minimum/maximum bounds, and custom validators.",
+        tags: ["Pydantic v2", "Data Validation", "Python"],
+        codeUrl: "https://github.com/Eitacee/Backend-development/tree/main/Theory/Unit2_Data_Model_Validation"
+      },
+      {
+        title: "Unit 2: Mongoose ODM & SQLAlchemy ORM",
+        category: ["theory"],
+        badgeText: "Theory Module",
+        badgeClass: "badge-theory",
+        desc: "Comparison of Object Data Modeling (Mongoose ODM) with Relational Object Mapping (SQLAlchemy ORM bidirectional back_populates).",
+        tags: ["Mongoose", "SQLAlchemy", "ODM", "ORM", "Architecture"],
+        codeUrl: "https://github.com/Eitacee/Backend-development/tree/main/Theory/Unit2_ORM"
+      },
+      {
+        title: "Theory Lec 26: Django Custom Timing Middleware",
+        category: ["theory"],
+        badgeText: "Theory Module",
+        badgeClass: "badge-theory",
+        desc: "Custom HTTP request processing middleware (SimpleLoggingMiddleware) logging execution latency via time.perf_counter().",
+        tags: ["Django", "Middleware", "Performance", "Logging"],
+        codeUrl: "https://github.com/Eitacee/Backend-development/tree/main/Theory/Lec_26"
+      }
+    ];
+
+    const grid = document.getElementById('projectGrid');
+    const searchInput = document.getElementById('searchInput');
+    const tabs = document.querySelectorAll('.tab-btn');
+
+    let currentFilter = 'all';
+    let searchQuery = '';
+
+    function updateCounts() {
+      document.getElementById('count-all').innerText = projects.length;
+      document.getElementById('count-live').innerText = projects.filter(p => p.category.includes('live')).length;
+      document.getElementById('count-lab').innerText = projects.filter(p => p.category.includes('lab')).length;
+      document.getElementById('count-theory').innerText = projects.filter(p => p.category.includes('theory')).length;
+      document.getElementById('count-assignment').innerText = projects.filter(p => p.category.includes('assignment')).length;
+    }
+
+    function renderProjects() {
+      grid.innerHTML = '';
+      const filtered = projects.filter(item => {
+        const matchesFilter = currentFilter === 'all' || item.category.includes(currentFilter);
+        const matchesSearch = searchQuery === '' ||
+          item.title.toLowerCase().includes(searchQuery) ||
+          item.desc.toLowerCase().includes(searchQuery) ||
+          item.tags.some(t => t.toLowerCase().includes(searchQuery));
+        return matchesFilter && matchesSearch;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 48px; color: var(--text-muted);">
+          <h3>No matching modules found</h3>
+          <p style="margin-top: 8px;">Try clearing your search term or select another category filter.</p>
+        </div>`;
+        return;
+      }
+
+      filtered.forEach(p => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+          <div class="card-top">
+            <div class="card-badge-row">
+              <span class="type-badge ${p.badgeClass}">${p.badgeText}</span>
+            </div>
+            <h2 class="card-title">${p.title}</h2>
+            <p class="card-desc">${p.desc}</p>
+            <div class="tag-list">
+              ${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}
+            </div>
+          </div>
+          <div class="card-actions">
+            ${p.liveUrl ? `<a href="${p.liveUrl}" class="card-btn card-btn-launch">🚀 Launch Live Demo</a>` : ''}
+            <a href="${p.codeUrl}" target="_blank" class="card-btn card-btn-code">📂 View Source Code</a>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    tabs.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabs.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentFilter = btn.dataset.filter;
+        renderProjects();
+      });
+    });
+
+    searchInput.addEventListener('input', (e) => {
+      searchQuery = e.target.value.toLowerCase().trim();
+      renderProjects();
+    });
+
+    updateCounts();
+    renderProjects();
+  </script>
 </body>
 </html>
-
