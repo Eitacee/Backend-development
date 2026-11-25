@@ -4,8 +4,8 @@
 To implement and understand MongoDB Object Data Modeling (ODM) in a Node.js/Express application using Mongoose, featuring schema definitions, document validation, error handling, and CRUD operations.
 
 ## Student Information
-- **Name:** Akshat Mamgain
-- **SAP ID:** 590014875
+- **Name:** Prince kandari
+- **SAP ID:** 590014595
 
 ## Technologies Used
 - Node.js
