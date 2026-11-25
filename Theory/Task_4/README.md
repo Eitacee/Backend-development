@@ -51,3 +51,4 @@ To implement and understand session management in a Node.js web application usin
 
 ## Learning Outcome
 Understood how server-side sessions operate in Express.js, how session IDs are stored in client cookies and mapped to server session stores, and how to manage user state across HTTP requests.
+

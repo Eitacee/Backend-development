@@ -21,3 +21,4 @@ class SimpleLoggingMiddleware:
             duration_ms,
         )
         return response
+

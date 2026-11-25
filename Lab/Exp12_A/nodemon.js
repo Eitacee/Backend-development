@@ -4,3 +4,4 @@
   "ignore": ["node_modules"],
   "delay": "2500"
 }
+

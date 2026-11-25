@@ -58,3 +58,4 @@ The `User` schema defines:
 
 ## Learning Outcome
 Gained practical understanding of connecting Node.js applications to MongoDB via Mongoose, defining strongly-typed schemas with built-in validation, handling duplicate key errors, and executing asynchronous database queries with `async/await`.
+

@@ -32,3 +32,4 @@ start Assignment/notes-app/index.html
 
 ## Learning Outcome
 Strengthened proficiency in event handling, DOM manipulation, JSON serialization/deserialization (`JSON.stringify`/`JSON.parse`), and client-side data persistence with `localStorage`.
+

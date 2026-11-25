@@ -30,3 +30,4 @@ class Command(BaseCommand):
                 created_count += 1
 
         self.stdout.write(self.style.SUCCESS(f"Successfully seeded {created_count} sample tasks."))
+

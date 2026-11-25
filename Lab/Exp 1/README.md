@@ -69,3 +69,4 @@ The implementation covers the following core sections:
 1. Clone this repository or download the project files[cite: 1].
 2. Open the folder in **Visual Studio Code**[cite: 1].
 3. Open `index.html` using the **Live Server** extension to preview the web page live in your browser[cite: 1].
+

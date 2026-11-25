@@ -36,3 +36,4 @@ The experiments focus on implementing core backend concepts across diverse techn
 | **Exp 15B** | [`./Exp15B`](./Exp15B) | Multi-app Django project (`todo`, `tasks`, `student_api` external API proxy) & `uv` package manager demo | Django, Python, `uv` |
 | **Exam 01B** | [`./Exam01B`](./Exam01B) | Eisenhower Matrix To-Do App (Full SSR with Express, MongoDB, EJS, and Priority Quadrants) | Express, MongoDB, EJS |
 | **FastAPI Docker** | [`./FastAPI Docker Lab`](./FastAPI%20Docker%20Lab) | Containerizing a FastAPI application with Docker and GitHub Actions CI/CD | FastAPI, Docker, CI/CD |
+

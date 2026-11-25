@@ -166,3 +166,4 @@ curl -X POST http://localhost:8000/students/1/enrollments \
 ```bash
 curl -X DELETE http://localhost:8000/students/1
 ```
+

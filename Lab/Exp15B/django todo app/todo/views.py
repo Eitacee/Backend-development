@@ -47,3 +47,4 @@ def delete_task(request, task_id):
     task.delete()
 
     return redirect('task_list')
+

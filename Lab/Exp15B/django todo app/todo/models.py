@@ -16,3 +16,4 @@ class Task(models.Model):
         # Use the task title in the admin site and object representations.
         return self.title
 
+

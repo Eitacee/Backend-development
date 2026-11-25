@@ -17,3 +17,4 @@ def get_external_data(post_id):
         return {"data": None, "error": "External service is unavailable"}
     except ValueError:
         return {"data": None, "error": "External service returned invalid JSON"}
+

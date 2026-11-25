@@ -56,3 +56,4 @@ async function updateStudent() {
 async function deleteStudent() {
     await Student.findByIdAndDelete('studentId');
 }
+

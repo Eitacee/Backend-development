@@ -199,3 +199,4 @@ Destroying test database for alias 'default'...
 
 ## 7. Conclusion
 In Experiment 15, we successfully set up and built a full Django To-Do web application utilizing SQLite and the MVT architectural pattern. All requirements—from database modeling, ORM queries, view logic, and URL routing to custom static file serving and modular template design (`extends` & `include`)—were implemented, verified, and thoroughly tested.
+

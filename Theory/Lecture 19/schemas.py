@@ -108,3 +108,4 @@ class EnrollmentResponse(BaseModel):
 # Error schema
 class ErrorResponse(BaseModel):
     error: dict
+

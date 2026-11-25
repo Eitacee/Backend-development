@@ -70,3 +70,4 @@ class Enrollment(Base):
 # Create tables
 Base.metadata.create_all(engine)
 
+

@@ -20,3 +20,4 @@ def student_detail(request, student_id):
         "student_id": student_id,
         "message": "Student detail endpoint",
     })
+

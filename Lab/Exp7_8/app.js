@@ -67,3 +67,4 @@ list.addEventListener("click", (event) => {
         renderTasks();
     }
 });
+

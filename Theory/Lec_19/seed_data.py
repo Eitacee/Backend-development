@@ -101,3 +101,4 @@ except Exception as e:
     print("Error seeding database:", e)
 finally:
     db.close()
+

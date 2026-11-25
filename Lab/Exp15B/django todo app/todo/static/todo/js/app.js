@@ -11,3 +11,4 @@ document.addEventListener("DOMContentLoaded", function () {
     // Log a simple message for students to verify that the file loaded.
     console.log("Task Tracker JavaScript loaded.");
 });
+

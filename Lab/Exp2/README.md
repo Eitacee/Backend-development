@@ -33,3 +33,4 @@ start lab/Exp2/partf/index-animations.html
 
 ## Learning Outcome
 Mastered the three methods of CSS application (external, internal, inline) and their specificity hierarchy; gained proficiency in using complex CSS selectors, building responsive layouts with Flexbox and CSS Grid, and enhancing user experience with CSS transitions and keyframe animations.
+

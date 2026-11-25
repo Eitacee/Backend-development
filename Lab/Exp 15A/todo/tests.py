@@ -67,3 +67,4 @@ class TaskViewTest(TestCase):
         response = self.client.get(reverse('delete_task', args=[task_id]))
         self.assertRedirects(response, reverse('task_list'))
         self.assertFalse(Task.objects.filter(id=task_id).exists())
+

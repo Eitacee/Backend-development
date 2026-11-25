@@ -23,3 +23,4 @@ urlpatterns = [
     path('', views.index),
     path("api/students/", include("students.urls")),
 ]
+
