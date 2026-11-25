@@ -2,6 +2,11 @@
 
 **Student Name:** Prince Kandari  
 **SAP ID:** 590014595  
+**Live Website:** [https://eitacee.github.io/Backend-development/](https://eitacee.github.io/Backend-development/)  
+
+> 🌐 **Live Portfolio & Documentation:**  
+> Access all interactive web applications, experiment reports, and 1-click downloadable PDF documentation at:  
+> **[https://eitacee.github.io/Backend-development/](https://eitacee.github.io/Backend-development/)**
 
 This repository contains the coursework, lab experiments, theory lectures, assignments, and architectural demonstrations for the **Backend Development** curriculum.
 
@@ -113,3 +118,13 @@ BackendDevelopment/
 | **Databases & ORM/ODM** | MongoDB, Mongoose, PostgreSQL, SQLite, SQLAlchemy |
 | **Package Managers & Tools** | npm, pip, `uv`, Pipenv |
 
+---
+
+## 🌐 Live Website & Online Reports
+
+The complete coursework portfolio and interactive documentation is published on GitHub Pages:  
+👉 **[https://eitacee.github.io/Backend-development/](https://eitacee.github.io/Backend-development/)**
+
+* **Interactive Applications**: Launch the Notes App, HTML5 showcase, CSS layouts, and To-Do apps directly in any web browser.
+* **Academic Reports**: Read comprehensive documentation and reports for every experiment, assignment, and lecture module.
+* **Downloadable PDFs**: 1-click client-side PDF export and print formatting for academic submissions.
