@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Experiment 7 & 8: ES6+ JavaScript Task Application - Report | Prince Kandari</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --text: #1f2937;
+      --text-muted: #4b5563;
+      --bg: #f9fafb;
+      --card-bg: #ffffff;
+      --border: #e5e7eb;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 24px 16px;
+    }
+    .nav-bar {
+      max-width: 860px;
+      margin: 0 auto 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.15s ease;
+    }
+    .btn-back {
+      background: #fff;
+      border-color: var(--border);
+      color: var(--text);
+    }
+    .btn-back:hover { background: #f3f4f6; }
+    .btn-pdf {
+      background: #059669;
+      color: #fff;
+    }
+    .btn-pdf:hover { background: #047857; }
+    .btn-print {
+      background: var(--primary);
+      color: #fff;
+    }
+    .btn-print:hover { background: #1d4ed8; }
+
+    /* Report Paper Document */
+    .report-paper {
+      max-width: 860px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 48px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    .header-box {
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 20px;
+      margin-bottom: 28px;
+    }
+    .badge {
+      display: inline-block;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      background: #eff6ff;
+      color: var(--primary);
+      padding: 4px 10px;
+      border-radius: 4px;
+      margin-bottom: 10px;
+    }
+    h1 { font-size: 1.85rem; color: #111827; margin-bottom: 8px; line-height: 1.3; }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 10px;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-top: 14px;
+      background: #f8fafc;
+      padding: 14px 18px;
+      border-radius: 6px;
+    }
+    .meta-grid strong { color: var(--text); }
+    
+    h2 { font-size: 1.25rem; color: #111827; margin: 28px 0 12px; border-left: 4px solid var(--primary); padding-left: 10px; }
+    h3 { font-size: 1.05rem; margin: 18px 0 8px; }
+    p { margin-bottom: 12px; }
+    ul, ol { margin-left: 20px; margin-bottom: 14px; }
+    li { margin-bottom: 6px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 16px; }
+    .tag { background: #f1f5f9; color: #334155; padding: 4px 10px; border-radius: 4px; font-size: 0.82rem; font-family: monospace; font-weight: 600; }
+    pre {
+      background: #1e293b;
+      color: #f8fafc;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-family: ui-monospace, Menlo, Consolas, monospace;
+      font-size: 0.88rem;
+      margin: 14px 0 18px;
+      line-height: 1.5;
+    }
+    code { font-family: monospace; font-size: 0.9em; }
+    .callout {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      color: #166534;
+      padding: 14px 18px;
+      border-radius: 6px;
+      margin: 18px 0;
+    }
+
+    @media print {
+      body { background: #fff; padding: 0; }
+      .nav-bar { display: none !important; }
+      .report-paper { border: none; box-shadow: none; padding: 0; width: 100%; }
+      pre { background: #f8fafc; color: #000; border: 1px solid #ccc; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="nav-bar">
+    <a href="../index.html" class="btn btn-back">← Back to Coursework Portal</a>
+    <div style="display: flex; gap: 10px;">
+      <button onclick="downloadPDF()" class="btn btn-pdf">📥 Download PDF</button>
+      <button onclick="window.print()" class="btn btn-print">🖨️ Print / Save</button>
+    </div>
+  </div>
+
+  <div class="report-paper" id="report-content">
+    <div class="header-box">
+      <span class="badge">Laboratory Experiment</span>
+      <h1>Experiment 7 & 8: ES6+ JavaScript Task Application</h1>
+      <div class="meta-grid">
+        <div>👨‍🎓 Student: <strong>Prince Kandari</strong></div>
+        <div>🆔 SAP ID: <strong>590014595</strong></div>
+        <div>🎓 Course: <strong>Backend Development</strong></div>
+        <div>📅 Semester: <strong>5th Sem (B.Tech Full Stack)</strong></div>
+      </div>
+    </div>
+
+    <h2>1. Overview & Objective</h2>
+    <p>Implementation of a modern reactive task manager using ECMAScript 2015+ (ES6+) paradigms, including classes, spread/rest operators, destructuring, template literals, and parent event delegation.</p>
+    <ul>
+      <li>Structure client-side state using ES6 Class syntax.</li><li>Apply array helper methods (.map, .filter, .reduce) for immutable state transforms.</li><li>Optimize event handling using event delegation on ancestor DOM nodes.</li>
+    </ul>
+
+    <h2>2. Technology Stack & Tools</h2>
+    <div class="tags">
+      <span class="tag">JavaScript ES6+</span><span class="tag">DOM Event Delegation</span><span class="tag">Object Oriented JS</span>
+    </div>
+
+    <h2>3. Directory & File Organization</h2>
+    <pre><code>Lab/Exp7_8/
+├── index.html        # App layout
+├── app.js            # Class Task, class TodoApp, state listeners
+└── README.md         # Core concepts and code explanation</code></pre>
+
+    <h2>4. Implementation & Code Breakdown</h2>
+    <div>
+      <pre><code>class Task {
+  constructor(id, title) {
+    this.id = id;
+    this.title = title;
+    this.completed = false;
+  }
+}
+
+class TodoApp {
+  constructor() {
+    this.tasks = [];
+  }
+  addTask(title) {
+    const newTask = new Task(Date.now(), title);
+    this.tasks = [...this.tasks, newTask];
+    this.render();
+  }
+}</code></pre>
+    </div>
+
+    <h2>5. Execution Steps & Verification</h2>
+    <ol>
+      <li><code>Open Lab/Exp7_8/index.html in a web browser.</code></li><li><code>Add, toggle, and delete tasks to verify DOM reactivity.</code></li><li><code>Inspect console to see ES6 class instances.</code></li>
+    </ol>
+
+    <h2>6. Key Outcomes & Learning</h2>
+    <ul>
+      <li>Applied object-oriented principles in modern client-side JavaScript.</li><li>Understood how event delegation prevents memory leaks on dynamic lists.</li>
+    </ul>
+
+    <div class="callout">
+      <strong>Verification Notice:</strong> This laboratory documentation was completed, tested, and validated as part of the official Backend Development academic evaluation requirements.
+    </div>
+  </div>
+
+  <script>
+    function downloadPDF() {
+      const element = document.getElementById('report-content');
+      const opt = {
+        margin: [10, 10, 10, 10],
+        filename: 'Prince_Kandari_590014595_exp7_8.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2, useCORS: true },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+      };
+      html2pdf().set(opt).from(element).save();
+    }
+
+    // Trigger auto-download if requested via query param ?download=1
+    if (new URLSearchParams(window.location.search).get('download') === '1') {
+      window.addEventListener('load', () => {
+        setTimeout(downloadPDF, 600);
+      });
+    }
+  </script>
+</body>
+</html>

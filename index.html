@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Backend Development | Prince Kandari</title>
+  <title>Backend Development Portfolio | Prince Kandari</title>
   <style>
     :root {
       --bg: #ffffff;
@@ -15,6 +15,8 @@
       --primary-hover: #1d4ed8;
       --live: #059669;
       --live-hover: #047857;
+      --pdf: #dc2626;
+      --pdf-hover: #b91c1c;
       --tag-bg: #f3f4f6;
     }
 
@@ -29,6 +31,8 @@
         --primary-hover: #60a5fa;
         --live: #10b981;
         --live-hover: #34d399;
+        --pdf: #ef4444;
+        --pdf-hover: #dc2626;
         --tag-bg: #374151;
       }
     }
@@ -48,7 +52,7 @@
     }
 
     .container {
-      max-width: 860px;
+      max-width: 920px;
       margin: 0 auto;
     }
 
@@ -56,7 +60,7 @@
     header {
       border-bottom: 1px solid var(--border);
       padding-bottom: 24px;
-      margin-bottom: 36px;
+      margin-bottom: 32px;
     }
 
     h1 {
@@ -80,12 +84,17 @@
       color: var(--text);
     }
 
-    .repo-link {
+    .header-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    .btn-header {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: var(--primary);
-      color: #fff;
       padding: 8px 16px;
       border-radius: 6px;
       text-decoration: none;
@@ -94,8 +103,45 @@
       transition: background 0.15s ease;
     }
 
-    .repo-link:hover {
+    .btn-header-primary {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .btn-header-primary:hover {
       background: var(--primary-hover);
+    }
+
+    .btn-header-secondary {
+      border: 1px solid var(--border);
+      color: var(--text);
+      background: var(--card-bg);
+    }
+
+    .btn-header-secondary:hover {
+      background: var(--tag-bg);
+    }
+
+    /* Quick Note */
+    .info-banner {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      color: #1e40af;
+      padding: 12px 18px;
+      border-radius: 8px;
+      font-size: 0.92rem;
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .info-banner {
+        background: #1e3a8a;
+        border-color: #3b82f6;
+        color: #dbeafe;
+      }
     }
 
     /* Sections */
@@ -118,14 +164,14 @@
     .item-list {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 14px;
     }
 
     .item {
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 8px;
-      padding: 16px;
+      padding: 18px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -140,11 +186,11 @@
 
     .item-info {
       flex: 1;
-      min-width: 250px;
+      min-width: 280px;
     }
 
     .item-title {
-      font-size: 1.02rem;
+      font-size: 1.05rem;
       font-weight: 600;
       margin-bottom: 4px;
     }
@@ -175,17 +221,38 @@
       display: flex;
       gap: 8px;
       align-items: center;
-      flex-shrink: 0;
+      flex-wrap: wrap;
     }
 
     .btn {
-      padding: 6px 14px;
+      padding: 6px 12px;
       border-radius: 6px;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 600;
       text-decoration: none;
       transition: all 0.15s ease;
       white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .btn-report {
+      background: #4b5563;
+      color: #fff;
+    }
+
+    .btn-report:hover {
+      background: #374151;
+    }
+
+    .btn-pdf {
+      background: var(--pdf);
+      color: #fff;
+    }
+
+    .btn-pdf:hover {
+      background: var(--pdf-hover);
     }
 
     .btn-live {
@@ -231,83 +298,102 @@
 
   <div class="container">
     <header>
-      <h1>Backend Development Coursework</h1>
+      <h1>Backend Development Coursework & Reports</h1>
       <div class="meta">
         <span>Student: <strong>Prince Kandari</strong></span>
         <span>SAP ID: <strong>590014595</strong></span>
-        <span>Degree: <strong>B.Tech Full Stack</strong></span>
+        <span>Degree: <strong>B.Tech Full Stack (5th Sem)</strong></span>
       </div>
-      <a href="https://github.com/Eitacee/Backend-development" target="_blank" class="repo-link">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-        View GitHub Repository
-      </a>
+      <div class="header-links">
+        <a href="https://github.com/Eitacee/Backend-development" target="_blank" class="btn-header btn-header-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub Repository
+        </a>
+        <a href="https://github.com/Eitacee/Backend-development/blob/main/README.md" target="_blank" class="btn-header btn-header-secondary">
+          📄 Course Syllabus & Index
+        </a>
+      </div>
     </header>
 
-    <!-- Assignments Section -->
+    <div class="info-banner">
+      <span>💡 Every experiment and task below includes an interactive <strong>Read Report</strong> view and a 1-click <strong>Download PDF</strong> button.</span>
+    </div>
+
+    <!-- Coursework Assignments -->
     <section>
       <h2>📝 Coursework Assignments</h2>
       <div class="item-list">
         <div class="item">
           <div class="item-info">
-            <div class="item-title">Assignment 1: Notes Application</div>
-            <div class="item-desc">Interactive note-taking app with dynamic DOM creation, editing, and localStorage persistence.</div>
+            <div class="item-title">Assignment 1: Notes Application with LocalStorage Persistence</div>
+            <div class="item-desc">Interactive note-taking web app with dynamic DOM creation, editing, and localStorage persistence.</div>
             <div class="tags"><span class="tag">JavaScript</span><span class="tag">LocalStorage</span><span class="tag">HTML5/CSS3</span></div>
           </div>
           <div class="links">
-            <a href="./Assignment/notes-app/index.html" class="btn btn-live">Launch App</a>
+            <a href="./Assignment/notes-app/index.html" class="btn btn-live">🚀 Live App</a>
+            <a href="./reports/assignment1.html" class="btn btn-report">📖 Report</a>
+            <a href="./reports/assignment1.html?download=1" class="btn btn-pdf">📥 PDF</a>
             <a href="https://github.com/Eitacee/Backend-development/tree/main/Assignment/notes-app" target="_blank" class="btn btn-code">Code</a>
           </div>
         </div>
 
         <div class="item">
           <div class="item-info">
-            <div class="item-title">Assignment 2: PostgreSQL JSONB Analysis</div>
-            <div class="item-desc">In-depth technical research comparing PostgreSQL JSONB with document NoSQL, GIN indexing, and JSON operators.</div>
-            <div class="tags"><span class="tag">PostgreSQL</span><span class="tag">JSONB</span><span class="tag">GIN Indexing</span></div>
+            <div class="item-title">Assignment 2: PostgreSQL JSONB & Hybrid SQL/NoSQL Architecture</div>
+            <div class="item-desc">In-depth research paper evaluating PostgreSQL JSONB, GIN indexing, and JSON query operators.</div>
+            <div class="tags"><span class="tag">PostgreSQL</span><span class="tag">JSONB</span><span class="tag">GIN Indexing</span><span class="tag">SQL vs NoSQL</span></div>
           </div>
           <div class="links">
-            <a href="https://github.com/Eitacee/Backend-development/tree/main/Assignment/Assignment2_PostgreSQL_JSONB" target="_blank" class="btn btn-code">Read Report</a>
+            <a href="./reports/assignment2.html" class="btn btn-report">📖 Report</a>
+            <a href="./reports/assignment2.html?download=1" class="btn btn-pdf">📥 PDF</a>
+            <a href="https://github.com/Eitacee/Backend-development/tree/main/Assignment/Assignment2_PostgreSQL_JSONB" target="_blank" class="btn btn-code">Code</a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Lab Experiments Section -->
+    <!-- Lab Experiments -->
     <section>
       <h2>🧪 Laboratory Experiments</h2>
       <div class="item-list">
         <div class="item">
           <div class="item-info">
             <div class="item-title">Experiment 1: HTML5 Master Element Showcase</div>
-            <div class="item-desc">Comprehensive web page with all HTML5 semantic tags, forms, SVG, Canvas 2D, and multimedia elements.</div>
+            <div class="item-desc">Comprehensive web page covering all HTML5 semantic tags, form controls, SVG, and 2D Canvas.</div>
             <div class="tags"><span class="tag">HTML5</span><span class="tag">Canvas</span><span class="tag">SVG</span></div>
           </div>
           <div class="links">
-            <a href="./Lab/Exp_01/code.html" class="btn btn-live">View Page</a>
+            <a href="./Lab/Exp_01/code.html" class="btn btn-live">🚀 View Page</a>
+            <a href="./reports/exp1.html" class="btn btn-report">📖 Report</a>
+            <a href="./reports/exp1.html?download=1" class="btn btn-pdf">📥 PDF</a>
             <a href="https://github.com/Eitacee/Backend-development/tree/main/Lab/Exp_01" target="_blank" class="btn btn-code">Code</a>
           </div>
         </div>
 
         <div class="item">
           <div class="item-info">
-            <div class="item-title">Experiment 2: 6-Part CSS Master Suite</div>
-            <div class="item-desc">Covers External, Internal, Inline styles, Selectors, Flexbox/Grid Layouts, and Keyframe Animations.</div>
+            <div class="item-title">Experiment 2: 6-Part CSS Master Experiment</div>
+            <div class="item-desc">6-part stylesheet suite: External, Internal, Inline, Selectors, Flexbox/Grid Layouts, and Animations.</div>
             <div class="tags"><span class="tag">CSS3</span><span class="tag">Flexbox</span><span class="tag">Grid</span><span class="tag">Animations</span></div>
           </div>
           <div class="links">
-            <a href="./Lab/Exp2/parte/index-layout.html" class="btn btn-live">View Layout Demo</a>
+            <a href="./Lab/Exp2/parte/index-layout.html" class="btn btn-live">🚀 Layout Demo</a>
+            <a href="./reports/exp2.html" class="btn btn-report">📖 Report</a>
+            <a href="./reports/exp2.html?download=1" class="btn btn-pdf">📥 PDF</a>
             <a href="https://github.com/Eitacee/Backend-development/tree/main/Lab/Exp2" target="_blank" class="btn btn-code">Code</a>
           </div>
         </div>
 
         <div class="item">
           <div class="item-info">
-            <div class="item-title">Experiment 7 & 8: ES6 Classes To-Do Application</div>
-            <div class="item-desc">Task management web application built with ES6 Classes, spread operator, destructuring, and event delegation.</div>
+            <div class="item-title">Experiment 7 & 8: Modern ES6+ JavaScript To-Do Application</div>
+            <div class="item-desc">Task application built using ES6 Classes, spread operator, destructuring, and event delegation.</div>
             <div class="tags"><span class="tag">JavaScript ES6</span><span class="tag">DOM</span><span class="tag">Classes</span></div>
           </div>
           <div class="links">
-            <a href="./Lab/Exp7_8/index.html" class="btn btn-live">Launch App</a>
+            <a href="./Lab/Exp7_8/index.html" class="btn btn-live">🚀 Live App</a>
+            <a href="./reports/exp7_8.html" class="btn btn-report">📖 Report</a>
+            <a href="./reports/exp7_8.html?download=1" class="btn btn-pdf">📥 PDF</a>
             <a href="https://github.com/Eitacee/Backend-development/tree/main/Lab/Exp7_8" target="_blank" class="btn btn-code">Code</a>
           </div>
         </div>
@@ -319,6 +405,8 @@
             <div class="tags"><span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">EJS</span></div>
           </div>
           <div class="links">
+            <a href="./reports/exp12a.html" class="btn btn-report">📖 Report</a>
+            <a href="./reports/exp12a.html?download=1" class="btn btn-pdf">📥 PDF</a>
             <a href="https://github.com/Eitacee/Backend-development/tree/main/Lab/Exp12_A" target="_blank" class="btn btn-code">Code</a>
           </div>
         </div>
@@ -330,106 +418,250 @@
             <div class="tags"><span class="tag">Express</span><span class="tag">Cookies</span><span class="tag">Sessions</span></div>
           </div>
           <div class="links">
+            <a href="./reports/exp12b.html" class="btn btn-report">📖 Report</a>
+            <a href="./reports/exp12b.html?download=1" class="btn btn-pdf">📥 PDF</a>
             <a href="https://github.com/Eitacee/Backend-development/tree/main/Lab/Exp12_B" target="_blank" class="btn btn-code">Code</a>
           </div>
         </div>
 
         <div class="item">
           <div class="item-info">
-            <div class="item-title">Experiment 13: MongoDB ODM with Mongoose</div>
-            <div class="item-desc">Mongoose schema constraints, data validation, enum rules, and user password hashing.</div>
+            <div class="item-title">Experiment 13A & mongoose-demo: MongoDB ODM with Mongoose</div>
+            <div class="item-desc">Mongoose schema constraints, data validation, enum rules, and user authentication CRUD.</div>
             <div class="tags"><span class="tag">MongoDB</span><span class="tag">Mongoose</span><span class="tag">ODM</span></div>
           </div>
           <div class="links">
+            <a href="./reports/exp13a.html" class="btn btn-report">📖 Report</a>
+            <a href="./reports/exp13a.html?download=1" class="btn btn-pdf">📥 PDF</a>
             <a href="https://github.com/Eitacee/Backend-development/tree/main/Lab/mongoose-demo" target="_blank" class="btn btn-code">Code</a>
           </div>
         </div>
 
         <div class="item">
           <div class="item-info">
-            <div class="item-title">Experiment 15 & 15B: Django Task Systems</div>
-            <div class="item-desc">Baseline Django MVT To-Do app, multi-app architecture (todo, tasks, student_api), and uv package management.</div>
-            <div class="tags"><span class="tag">Django</span><span class="tag">Python</span><span class="tag">SQLite</span><span class="tag">uv</span></div>
+            <div class="item-title">Experiment 15: Baseline Django MVT To-Do Application</div>
+            <div class="item-desc">Django MVT task manager with SQLite database, ORM queries, and template inheritance.</div>
+            <div class="tags"><span class="tag">Django</span><span class="tag">Python</span><span class="tag">SQLite</span><span class="tag">ORM</span></div>
           </div>
           <div class="links">
-            <a href="https://github.com/Eitacee/Backend-development/tree/main/Lab/Exp15B" target="_blank" class="btn btn-code">Code (Exp 15B)</a>
-            <a href="https://github.com/Eitacee/Backend-development/tree/main/Lab/Exp15" target="_blank" class="btn btn-code">Code (Exp 15)</a>
+            <a href="./reports/exp15.html" class="btn btn-report">📖 Report</a>
+            <a href="./reports/exp15.html?download=1" class="btn btn-pdf">📥 PDF</a>
+            <a href="https://github.com/Eitacee/Backend-development/tree/main/Lab/Exp15" target="_blank" class="btn btn-code">Code</a>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-info">
+            <div class="item-title">Experiment 15B: Multi-App Django System & UV Package Management</div>
+            <div class="item-desc">Modular multi-app Django architecture (todo, tasks, student_api) and modern Python uv tool.</div>
+            <div class="tags"><span class="tag">Django</span><span class="tag">uv</span><span class="tag">Multi-App</span></div>
+          </div>
+          <div class="links">
+            <a href="./reports/exp15b.html" class="btn btn-report">📖 Report</a>
+            <a href="./reports/exp15b.html?download=1" class="btn btn-pdf">📥 PDF</a>
+            <a href="https://github.com/Eitacee/Backend-development/tree/main/Lab/Exp15B" target="_blank" class="btn btn-code">Code</a>
           </div>
         </div>
 
         <div class="item">
           <div class="item-info">
             <div class="item-title">Exam 01B: Eisenhower Matrix SSR To-Do Application</div>
-            <div class="item-desc">Task prioritization app using Eisenhower matrix, built with Express.js, MongoDB driver, and EJS.</div>
+            <div class="item-desc">Task prioritization system built with Express, MongoDB driver, and EJS for the Lab Exam.</div>
             <div class="tags"><span class="tag">Express</span><span class="tag">MongoDB</span><span class="tag">EJS</span></div>
           </div>
           <div class="links">
+            <a href="./reports/exam01b.html" class="btn btn-report">📖 Report</a>
+            <a href="./reports/exam01b.html?download=1" class="btn btn-pdf">📥 PDF</a>
             <a href="https://github.com/Eitacee/Backend-development/tree/main/Lab/Exam01B" target="_blank" class="btn btn-code">Code</a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Theory Section -->
+    <!-- Theory Modules -->
     <section>
-      <h2>📖 Theory Lectures & Demonstrations</h2>
+      <h2>📖 Theory Lectures & Architecture Modules</h2>
       <div class="item-list">
         <div class="item">
           <div class="item-info">
-            <div class="item-title">Unit 1: Tasks 1–4 & Microframeworks</div>
-            <div class="item-desc">Express + EJS (Task 1), Flask routing (Task 2), FastAPI CRUD (Task 3), and Express Sessions (Task 4).</div>
-            <div class="tags"><span class="tag">Express</span><span class="tag">Flask</span><span class="tag">FastAPI</span></div>
+            <div class="item-title">Theory Task 1: Express Server & EJS View Templating</div>
+            <div class="item-desc">Dynamic server-side view templating with EJS in Express.js.</div>
+            <div class="tags"><span class="tag">Express</span><span class="tag">EJS</span></div>
           </div>
           <div class="links">
-            <a href="https://github.com/Eitacee/Backend-development/tree/main/Theory/Task_1" target="_blank" class="btn btn-code">Task 1</a>
-            <a href="https://github.com/Eitacee/Backend-development/tree/main/Theory/Task_3" target="_blank" class="btn btn-code">Task 3</a>
+            <a href="./reports/task1.html" class="btn btn-report">📖 Report</a>
+            <a href="./reports/task1.html?download=1" class="btn btn-pdf">📥 PDF</a>
+            <a href="https://github.com/Eitacee/Backend-development/tree/main/Theory/Task_1" target="_blank" class="btn btn-code">Code</a>
           </div>
         </div>
 
         <div class="item">
           <div class="item-info">
-            <div class="item-title">Theory Lec 06, 07 & 08: Cookies, LocalStorage & Jinja2</div>
-            <div class="item-desc">Cookies demo (Lec 06), Client-side LocalStorage To-Do (Lec 07), and FastAPI server-side Jinja2 rendering (Lec 08).</div>
-            <div class="tags"><span class="tag">Cookies</span><span class="tag">LocalStorage</span><span class="tag">Jinja2</span></div>
+            <div class="item-title">Theory Task 2: Flask Microframework Fundamentals</div>
+            <div class="item-desc">Python WSGI microframework routing, dynamic URL parameters, and response handling.</div>
+            <div class="tags"><span class="tag">Flask</span><span class="tag">Python</span></div>
           </div>
           <div class="links">
-            <a href="./Theory/Lec_07/index.html" class="btn btn-live">Lec 07 Live Demo</a>
-            <a href="https://github.com/Eitacee/Backend-development/tree/main/Theory/Lec_08" target="_blank" class="btn btn-code">Lec 08 Code</a>
+            <a href="./reports/task2.html" class="btn btn-report">📖 Report</a>
+            <a href="./reports/task2.html?download=1" class="btn btn-pdf">📥 PDF</a>
+            <a href="https://github.com/Eitacee/Backend-development/tree/main/Theory/Task_2" target="_blank" class="btn btn-code">Code</a>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-info">
+            <div class="item-title">Theory Task 3: FastAPI REST Application with Pydantic Validation</div>
+            <div class="item-desc">FastAPI asynchronous REST API with automatic OpenAPI Swagger UI and Pydantic validation.</div>
+            <div class="tags"><span class="tag">FastAPI</span><span class="tag">Pydantic v2</span></div>
+          </div>
+          <div class="links">
+            <a href="./reports/task3.html" class="btn btn-report">📖 Report</a>
+            <a href="./reports/task3.html?download=1" class="btn btn-pdf">📥 PDF</a>
+            <a href="https://github.com/Eitacee/Backend-development/tree/main/Theory/Task_3" target="_blank" class="btn btn-code">Code</a>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-info">
+            <div class="item-title">Theory Task 4: Express Session Tracking</div>
+            <div class="item-desc">Session state control, visit counters, and user authentication with express-session.</div>
+            <div class="tags"><span class="tag">Express</span><span class="tag">Sessions</span></div>
+          </div>
+          <div class="links">
+            <a href="./reports/task4.html" class="btn btn-report">📖 Report</a>
+            <a href="./reports/task4.html?download=1" class="btn btn-pdf">📥 PDF</a>
+            <a href="https://github.com/Eitacee/Backend-development/tree/main/Theory/Task_4" target="_blank" class="btn btn-code">Code</a>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-info">
+            <div class="item-title">Theory Lec 06: Express Cookies & Sessions</div>
+            <div class="item-desc">Comparing client-side cookies and server-side session stores in Node.js.</div>
+            <div class="tags"><span class="tag">Cookies</span><span class="tag">Sessions</span></div>
+          </div>
+          <div class="links">
+            <a href="./reports/lec06.html" class="btn btn-report">📖 Report</a>
+            <a href="./reports/lec06.html?download=1" class="btn btn-pdf">📥 PDF</a>
+            <a href="https://github.com/Eitacee/Backend-development/tree/main/Theory/Lec_06" target="_blank" class="btn btn-code">Code</a>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-info">
+            <div class="item-title">Theory Lec 07: Client-Side LocalStorage Persistence</div>
+            <div class="item-desc">Client-side To-Do app using browser localStorage caching and JSON serialization.</div>
+            <div class="tags"><span class="tag">LocalStorage</span><span class="tag">JavaScript</span></div>
+          </div>
+          <div class="links">
+            <a href="./Theory/Lec_07/index.html" class="btn btn-live">🚀 Live Demo</a>
+            <a href="./reports/lec07.html" class="btn btn-report">📖 Report</a>
+            <a href="./reports/lec07.html?download=1" class="btn btn-pdf">📥 PDF</a>
+            <a href="https://github.com/Eitacee/Backend-development/tree/main/Theory/Lec_07" target="_blank" class="btn btn-code">Code</a>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-info">
+            <div class="item-title">Theory Lec 08: FastAPI Server-Side HTML Rendering (Jinja2)</div>
+            <div class="item-desc">Server-side template rendering in FastAPI using Jinja2Templates engine.</div>
+            <div class="tags"><span class="tag">FastAPI</span><span class="tag">Jinja2</span></div>
+          </div>
+          <div class="links">
+            <a href="./reports/lec08.html" class="btn btn-report">📖 Report</a>
+            <a href="./reports/lec08.html?download=1" class="btn btn-pdf">📥 PDF</a>
+            <a href="https://github.com/Eitacee/Backend-development/tree/main/Theory/Lec_08" target="_blank" class="btn btn-code">Code</a>
           </div>
         </div>
 
         <div class="item">
           <div class="item-info">
             <div class="item-title">Theory Lec 19: Relational REST API (FastAPI + SQLAlchemy)</div>
-            <div class="item-desc">Full-featured relational API: Student, Course, Department, Enrollment models with SQLite, seed data, and tests.</div>
+            <div class="item-desc">Relational models (Student, Course, Department, Enrollment) with SQLite, seed scripts, and tests.</div>
             <div class="tags"><span class="tag">FastAPI</span><span class="tag">SQLAlchemy</span><span class="tag">SQLite</span><span class="tag">ORM</span></div>
           </div>
           <div class="links">
-            <a href="https://github.com/Eitacee/Backend-development/tree/main/Theory/Lec_19" target="_blank" class="btn btn-code">Code & API Docs</a>
+            <a href="./reports/lec19.html" class="btn btn-report">📖 Report</a>
+            <a href="./reports/lec19.html?download=1" class="btn btn-pdf">📥 PDF</a>
+            <a href="https://github.com/Eitacee/Backend-development/tree/main/Theory/Lec_19" target="_blank" class="btn btn-code">Code</a>
           </div>
         </div>
 
         <div class="item">
           <div class="item-info">
-            <div class="item-title">Unit 2: Data Model Validation, ODM & ORM</div>
-            <div class="item-desc">Pydantic v2 data model validation rules, Mongoose Object Data Modeling, and SQLAlchemy ORM relationships.</div>
-            <div class="tags"><span class="tag">Pydantic v2</span><span class="tag">Mongoose</span><span class="tag">SQLAlchemy</span></div>
+            <div class="item-title">Unit 2: Data Model Validation with Pydantic v2</div>
+            <div class="item-desc">Pydantic v2 field constraints, EmailStr validation, min/max bounds, and custom validators.</div>
+            <div class="tags"><span class="tag">Pydantic v2</span><span class="tag">Python</span></div>
           </div>
           <div class="links">
-            <a href="https://github.com/Eitacee/Backend-development/tree/main/Theory/Unit2_Data_Model_Validation" target="_blank" class="btn btn-code">Validation</a>
-            <a href="https://github.com/Eitacee/Backend-development/tree/main/Theory/Unit2_ORM" target="_blank" class="btn btn-code">ORM</a>
+            <a href="./reports/unit2_validation.html" class="btn btn-report">📖 Report</a>
+            <a href="./reports/unit2_validation.html?download=1" class="btn btn-pdf">📥 PDF</a>
+            <a href="https://github.com/Eitacee/Backend-development/tree/main/Theory/Unit2_Data_Model_Validation" target="_blank" class="btn btn-code">Code</a>
           </div>
         </div>
 
         <div class="item">
           <div class="item-info">
-            <div class="item-title">Unit 3: Architecture & Custom Middleware (Lec 25, 26, 29)</div>
-            <div class="item-desc">Express API starter (Lec 25), Django execution latency logging middleware (Lec 26), and Django student tests (Lec 29).</div>
-            <div class="tags"><span class="tag">Django</span><span class="tag">Express</span><span class="tag">Middleware</span></div>
+            <div class="item-title">Unit 2: Object Data Modeling (ODM) with Mongoose</div>
+            <div class="item-desc">MongoDB schema validation, enum constraints, string trimming, and normalization.</div>
+            <div class="tags"><span class="tag">Mongoose</span><span class="tag">MongoDB</span></div>
           </div>
           <div class="links">
-            <a href="https://github.com/Eitacee/Backend-development/tree/main/Theory/Lec_26" target="_blank" class="btn btn-code">Lec 26</a>
-            <a href="https://github.com/Eitacee/Backend-development/tree/main/Theory/Lec_29" target="_blank" class="btn btn-code">Lec 29</a>
+            <a href="./reports/unit2_odm.html" class="btn btn-report">📖 Report</a>
+            <a href="./reports/unit2_odm.html?download=1" class="btn btn-pdf">📥 PDF</a>
+            <a href="https://github.com/Eitacee/Backend-development/tree/main/Theory/Unit2_ODM" target="_blank" class="btn btn-code">Code</a>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-info">
+            <div class="item-title">Unit 2: Object Relational Mapping (ORM) with SQLAlchemy</div>
+            <div class="item-desc">SQLAlchemy bidirectional relationships using relationship(..., back_populates=...).</div>
+            <div class="tags"><span class="tag">SQLAlchemy</span><span class="tag">ORM</span><span class="tag">SQLite</span></div>
+          </div>
+          <div class="links">
+            <a href="./reports/unit2_orm.html" class="btn btn-report">📖 Report</a>
+            <a href="./reports/unit2_orm.html?download=1" class="btn btn-pdf">📥 PDF</a>
+            <a href="https://github.com/Eitacee/Backend-development/tree/main/Theory/Unit2_ORM" target="_blank" class="btn btn-code">Code</a>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-info">
+            <div class="item-title">Theory Lec 25: Express REST API Starter</div>
+            <div class="item-desc">Production Express.js REST API with express.json() body parsing and error middleware.</div>
+            <div class="tags"><span class="tag">Express</span><span class="tag">API</span></div>
+          </div>
+          <div class="links">
+            <a href="./reports/lec25.html" class="btn btn-report">📖 Report</a>
+            <a href="./reports/lec25.html?download=1" class="btn btn-pdf">📥 PDF</a>
+            <a href="https://github.com/Eitacee/Backend-development/tree/main/Theory/Lec_25" target="_blank" class="btn btn-code">Code</a>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-info">
+            <div class="item-title">Theory Lec 26: Django Custom Execution Logging Middleware</div>
+            <div class="item-desc">Custom middleware (SimpleLoggingMiddleware) calculating latency via time.perf_counter().</div>
+            <div class="tags"><span class="tag">Django</span><span class="tag">Middleware</span></div>
+          </div>
+          <div class="links">
+            <a href="./reports/lec26.html" class="btn btn-report">📖 Report</a>
+            <a href="./reports/lec26.html?download=1" class="btn btn-pdf">📥 PDF</a>
+            <a href="https://github.com/Eitacee/Backend-development/tree/main/Theory/Lec_26" target="_blank" class="btn btn-code">Code</a>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="item-info">
+            <div class="item-title">Theory Lec 29: Django Student Project & Unit Testing</div>
+            <div class="item-desc">Automated regression testing in Django with TestCase verifying models, views, and routes.</div>
+            <div class="tags"><span class="tag">Django</span><span class="tag">Unit Testing</span></div>
+          </div>
+          <div class="links">
+            <a href="./reports/lec29.html" class="btn btn-report">📖 Report</a>
+            <a href="./reports/lec29.html?download=1" class="btn btn-pdf">📥 PDF</a>
+            <a href="https://github.com/Eitacee/Backend-development/tree/main/Theory/Lec_29" target="_blank" class="btn btn-code">Code</a>
           </div>
         </div>
       </div>
